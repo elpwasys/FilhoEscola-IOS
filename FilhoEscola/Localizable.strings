@@ -1,0 +1,24 @@
+/* 
+  Localizable.strings
+
+  Created by Everton Luiz Pascke on 09/11/16.
+  Copyright © 2016 Everton Luiz Pascke. All rights reserved.
+*/
+
+/* Label */
+"Label.Links" = "Links";
+"Label.Aplicativo" = "Aplicativo";
+"Label.Sair" = "Sair";
+"Label.Sim" = "Sim";
+"Label.Nao" = "Não";
+"Label.Sobre" = "Sobre";
+"Label.Comercial" = "Comercial";
+"Label.Cache" = "Cache";
+"Label.Limpar" = "Limpar";
+"Label.Versao" = "Versão";
+
+
+/* Message */
+"Message.CodigoInvalido" = "Código inválido!";
+"Message.SairAplicativo" = "Deseja sair do aplicativo?";
+"Message.Cache" = "O aplicativo armazena dados para tornar a sua navegação mais rápida.\nCaso alguma informação esteja desatualizada, você pode forçar a atualização pressionando o botão 'Limpar'";

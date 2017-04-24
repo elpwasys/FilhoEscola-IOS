@@ -1,12 +1,13 @@
 //
 //  AppDelegate.swift
-//  FilhoEscola
+//  ClubMesa
 //
-//  Created by Everton Luiz Pascke on 23/04/17.
-//  Copyright © 2017 Wasys Technology. All rights reserved.
+//  Created by Everton Luiz Pascke on 14/04/17.
+//  Copyright © 2017 Everton Luiz Pascke. All rights reserved.
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,7 +16,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        IQKeyboardManager.sharedManager().enable = true
+        URLProtocol.registerClass(AppURLProtocol.self)
+        
+        let color = #colorLiteral(red: 0.9982196689, green: 0.3983421922, blue: 0, alpha: 1)
+        UITextField.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().barTintColor = color
+        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().isTranslucent = true
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.black]
+        
         return true
     }
 
@@ -40,7 +51,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
 }
-

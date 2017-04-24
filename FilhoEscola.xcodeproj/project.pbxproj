@@ -7,21 +7,109 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EEE4AEBE1EAD726F00AA2539 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE4AEBD1EAD726F00AA2539 /* AppDelegate.swift */; };
-		EEE4AEC01EAD726F00AA2539 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE4AEBF1EAD726F00AA2539 /* ViewController.swift */; };
-		EEE4AEC31EAD726F00AA2539 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEE4AEC11EAD726F00AA2539 /* Main.storyboard */; };
 		EEE4AEC51EAD726F00AA2539 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEE4AEC41EAD726F00AA2539 /* Assets.xcassets */; };
-		EEE4AEC81EAD726F00AA2539 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEE4AEC61EAD726F00AA2539 /* LaunchScreen.storyboard */; };
+		EEE4AED41EAD8D7900AA2539 /* HttpStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE4AED31EAD8D7900AA2539 /* HttpStatus.swift */; };
+		EEE4AED91EAD8D8000AA2539 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE4AED51EAD8D8000AA2539 /* DateUtils.swift */; };
+		EEE4AEDA1EAD8D8000AA2539 /* NumberUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE4AED61EAD8D8000AA2539 /* NumberUtils.swift */; };
+		EEE4AEDB1EAD8D8000AA2539 /* TextUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE4AED71EAD8D8000AA2539 /* TextUtils.swift */; };
+		EEE4AEDC1EAD8D8000AA2539 /* ViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE4AED81EAD8D8000AA2539 /* ViewUtils.swift */; };
+		EEE4AEE31EAD8D8700AA2539 /* DateField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE4AEDD1EAD8D8700AA2539 /* DateField.swift */; };
+		EEE4AEE41EAD8D8700AA2539 /* PickerField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE4AEDE1EAD8D8700AA2539 /* PickerField.swift */; };
+		EEE4AEE51EAD8D8700AA2539 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE4AEDF1EAD8D8700AA2539 /* TextField.swift */; };
+		EEE4AEE61EAD8D8700AA2539 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE4AEE01EAD8D8700AA2539 /* Button.swift */; };
+		EEE4AEE71EAD8D8700AA2539 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE4AEE11EAD8D8700AA2539 /* View.swift */; };
+		EEE4AEE81EAD8D8700AA2539 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE4AEE21EAD8D8700AA2539 /* CircleView.swift */; };
+		EEE4AEEF1EAD8D9400AA2539 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE4AEE91EAD8D9400AA2539 /* App.swift */; };
+		EEE4AEF01EAD8D9400AA2539 /* HRToast+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE4AEEA1EAD8D9400AA2539 /* HRToast+UIView.swift */; };
+		EEE4AEF11EAD8D9400AA2539 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE4AEEB1EAD8D9400AA2539 /* Service.swift */; };
+		EEE4AEF21EAD8D9400AA2539 /* AppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE4AEEC1EAD8D9400AA2539 /* AppViewController.swift */; };
+		EEE4AEF31EAD8D9400AA2539 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE4AEED1EAD8D9400AA2539 /* Model.swift */; };
+		EEE4AEF41EAD8D9400AA2539 /* Trouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE4AEEE1EAD8D9400AA2539 /* Trouble.swift */; };
+		EEE4AEF71EAD8DB900AA2539 /* Device.js in Resources */ = {isa = PBXBuildFile; fileRef = EEE4AEF61EAD8DB900AA2539 /* Device.js */; };
+		EEE4AEFA1EAD8DC900AA2539 /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = EEE4AEF81EAD8DC900AA2539 /* config.plist */; };
+		EEE4AEFB1EAD8DC900AA2539 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EEE4AEF91EAD8DC900AA2539 /* Localizable.strings */; };
+		EEE4AEFF1EAD8E2F00AA2539 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEE4AEFE1EAD8E2F00AA2539 /* SWRevealViewController.m */; };
+		EEE4AF071EAD8EED00AA2539 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE4AF061EAD8EED00AA2539 /* Cache.swift */; };
+		EEE4AF0E1EAD8F6800AA2539 /* CacheModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE4AF081EAD8F6800AA2539 /* CacheModel.swift */; };
+		EEE4AF0F1EAD8F6800AA2539 /* DispositivoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE4AF091EAD8F6800AA2539 /* DispositivoModel.swift */; };
+		EEE4AF101EAD8F6800AA2539 /* ResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE4AF0A1EAD8F6800AA2539 /* ResultModel.swift */; };
+		EEE4AF111EAD8F6800AA2539 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE4AF0B1EAD8F6800AA2539 /* ViewModel.swift */; };
+		EEE4AF121EAD8F6800AA2539 /* ToolbarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE4AF0C1EAD8F6800AA2539 /* ToolbarModel.swift */; };
+		EEE4AF131EAD8F6800AA2539 /* ButtonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE4AF0D1EAD8F6800AA2539 /* ButtonModel.swift */; };
+		EEE4AF171EAD8FC900AA2539 /* FilhoEscola.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE4AF141EAD8FC900AA2539 /* FilhoEscola.swift */; };
+		EEE4AF181EAD8FC900AA2539 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE4AF151EAD8FC900AA2539 /* AppDelegate.swift */; };
+		EEE4AF191EAD8FC900AA2539 /* AppURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE4AF161EAD8FC900AA2539 /* AppURLProtocol.swift */; };
+		EEE4AF281EAD90D200AA2539 /* FrontViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE4AF201EAD90D200AA2539 /* FrontViewController.swift */; };
+		EEE4AF291EAD90D200AA2539 /* DrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE4AF211EAD90D200AA2539 /* DrawerViewController.swift */; };
+		EEE4AF2A1EAD90D200AA2539 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE4AF221EAD90D200AA2539 /* MenuTableViewController.swift */; };
+		EEE4AF2B1EAD90D200AA2539 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE4AF231EAD90D200AA2539 /* WebViewController.swift */; };
+		EEE4AF2C1EAD90D200AA2539 /* CacheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE4AF241EAD90D200AA2539 /* CacheViewController.swift */; };
+		EEE4AF2D1EAD90D200AA2539 /* InicialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE4AF251EAD90D200AA2539 /* InicialViewController.swift */; };
+		EEE4AF2E1EAD90D200AA2539 /* AcessoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE4AF261EAD90D200AA2539 /* AcessoViewController.swift */; };
+		EEE4AF2F1EAD90D200AA2539 /* CodigoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE4AF271EAD90D200AA2539 /* CodigoViewController.swift */; };
+		EEE4AF331EAD910100AA2539 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEE4AF301EAD910100AA2539 /* Main.storyboard */; };
+		EEE4AF341EAD910100AA2539 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEE4AF311EAD910100AA2539 /* Menu.storyboard */; };
+		EEE4AF351EAD910100AA2539 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEE4AF321EAD910100AA2539 /* LaunchScreen.storyboard */; };
+		EEE4AF391EAD988100AA2539 /* FileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE4AF361EAD988100AA2539 /* FileService.swift */; };
+		EEE4AF3A1EAD988100AA2539 /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE4AF371EAD988100AA2539 /* CacheService.swift */; };
+		EEE4AF3B1EAD988100AA2539 /* DispositivoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE4AF381EAD988100AA2539 /* DispositivoService.swift */; };
+		F73F39D61B63F1E63FD99CD0 /* Pods_FilhoEscola.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69F7B5F5ADFA81D58520BBBF /* Pods_FilhoEscola.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		69F7B5F5ADFA81D58520BBBF /* Pods_FilhoEscola.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FilhoEscola.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CAC51ECEDB7B18A7644D067C /* Pods-FilhoEscola.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FilhoEscola.release.xcconfig"; path = "Pods/Target Support Files/Pods-FilhoEscola/Pods-FilhoEscola.release.xcconfig"; sourceTree = "<group>"; };
+		D3C30380CB4536B1234D79D8 /* Pods-FilhoEscola.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FilhoEscola.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FilhoEscola/Pods-FilhoEscola.debug.xcconfig"; sourceTree = "<group>"; };
 		EEE4AEBA1EAD726F00AA2539 /* FilhoEscola.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FilhoEscola.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		EEE4AEBD1EAD726F00AA2539 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EEE4AEBF1EAD726F00AA2539 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		EEE4AEC21EAD726F00AA2539 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EEE4AEC41EAD726F00AA2539 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		EEE4AEC71EAD726F00AA2539 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EEE4AEC91EAD726F00AA2539 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EEE4AED31EAD8D7900AA2539 /* HttpStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpStatus.swift; sourceTree = "<group>"; };
+		EEE4AED51EAD8D8000AA2539 /* DateUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
+		EEE4AED61EAD8D8000AA2539 /* NumberUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberUtils.swift; sourceTree = "<group>"; };
+		EEE4AED71EAD8D8000AA2539 /* TextUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextUtils.swift; sourceTree = "<group>"; };
+		EEE4AED81EAD8D8000AA2539 /* ViewUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewUtils.swift; sourceTree = "<group>"; };
+		EEE4AEDD1EAD8D8700AA2539 /* DateField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateField.swift; sourceTree = "<group>"; };
+		EEE4AEDE1EAD8D8700AA2539 /* PickerField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerField.swift; sourceTree = "<group>"; };
+		EEE4AEDF1EAD8D8700AA2539 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		EEE4AEE01EAD8D8700AA2539 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		EEE4AEE11EAD8D8700AA2539 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		EEE4AEE21EAD8D8700AA2539 /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		EEE4AEE91EAD8D9400AA2539 /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		EEE4AEEA1EAD8D9400AA2539 /* HRToast+UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HRToast+UIView.swift"; sourceTree = "<group>"; };
+		EEE4AEEB1EAD8D9400AA2539 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		EEE4AEEC1EAD8D9400AA2539 /* AppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppViewController.swift; sourceTree = "<group>"; };
+		EEE4AEED1EAD8D9400AA2539 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		EEE4AEEE1EAD8D9400AA2539 /* Trouble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trouble.swift; sourceTree = "<group>"; };
+		EEE4AEF61EAD8DB900AA2539 /* Device.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Device.js; sourceTree = "<group>"; };
+		EEE4AEF81EAD8DC900AA2539 /* config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
+		EEE4AEF91EAD8DC900AA2539 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		EEE4AEFC1EAD8E2F00AA2539 /* FilhoEscola-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FilhoEscola-Bridging-Header.h"; sourceTree = "<group>"; };
+		EEE4AEFD1EAD8E2F00AA2539 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		EEE4AEFE1EAD8E2F00AA2539 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		EEE4AF061EAD8EED00AA2539 /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		EEE4AF081EAD8F6800AA2539 /* CacheModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheModel.swift; sourceTree = "<group>"; };
+		EEE4AF091EAD8F6800AA2539 /* DispositivoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispositivoModel.swift; sourceTree = "<group>"; };
+		EEE4AF0A1EAD8F6800AA2539 /* ResultModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultModel.swift; sourceTree = "<group>"; };
+		EEE4AF0B1EAD8F6800AA2539 /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		EEE4AF0C1EAD8F6800AA2539 /* ToolbarModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarModel.swift; sourceTree = "<group>"; };
+		EEE4AF0D1EAD8F6800AA2539 /* ButtonModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonModel.swift; sourceTree = "<group>"; };
+		EEE4AF141EAD8FC900AA2539 /* FilhoEscola.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilhoEscola.swift; sourceTree = "<group>"; };
+		EEE4AF151EAD8FC900AA2539 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EEE4AF161EAD8FC900AA2539 /* AppURLProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppURLProtocol.swift; sourceTree = "<group>"; };
+		EEE4AF201EAD90D200AA2539 /* FrontViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrontViewController.swift; sourceTree = "<group>"; };
+		EEE4AF211EAD90D200AA2539 /* DrawerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerViewController.swift; sourceTree = "<group>"; };
+		EEE4AF221EAD90D200AA2539 /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
+		EEE4AF231EAD90D200AA2539 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		EEE4AF241EAD90D200AA2539 /* CacheViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheViewController.swift; sourceTree = "<group>"; };
+		EEE4AF251EAD90D200AA2539 /* InicialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InicialViewController.swift; sourceTree = "<group>"; };
+		EEE4AF261EAD90D200AA2539 /* AcessoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcessoViewController.swift; sourceTree = "<group>"; };
+		EEE4AF271EAD90D200AA2539 /* CodigoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodigoViewController.swift; sourceTree = "<group>"; };
+		EEE4AF301EAD910100AA2539 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		EEE4AF311EAD910100AA2539 /* Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
+		EEE4AF321EAD910100AA2539 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EEE4AF361EAD988100AA2539 /* FileService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileService.swift; sourceTree = "<group>"; };
+		EEE4AF371EAD988100AA2539 /* CacheService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
+		EEE4AF381EAD988100AA2539 /* DispositivoService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispositivoService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +117,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F73F39D61B63F1E63FD99CD0 /* Pods_FilhoEscola.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1BAF286D4C4A84D1A19AA3E4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D3C30380CB4536B1234D79D8 /* Pods-FilhoEscola.debug.xcconfig */,
+				CAC51ECEDB7B18A7644D067C /* Pods-FilhoEscola.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C365DC8BB4EF0648B28E96EE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				69F7B5F5ADFA81D58520BBBF /* Pods_FilhoEscola.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EEE4AEB11EAD726F00AA2539 = {
 			isa = PBXGroup;
 			children = (
 				EEE4AEBC1EAD726F00AA2539 /* FilhoEscola */,
 				EEE4AEBB1EAD726F00AA2539 /* Products */,
+				1BAF286D4C4A84D1A19AA3E4 /* Pods */,
+				C365DC8BB4EF0648B28E96EE /* Frameworks */,
+				EEE4AECF1EAD8D2A00AA2539 /* Library */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +163,136 @@
 		EEE4AEBC1EAD726F00AA2539 /* FilhoEscola */ = {
 			isa = PBXGroup;
 			children = (
-				EEE4AEBD1EAD726F00AA2539 /* AppDelegate.swift */,
-				EEE4AEBF1EAD726F00AA2539 /* ViewController.swift */,
-				EEE4AEC11EAD726F00AA2539 /* Main.storyboard */,
-				EEE4AEC41EAD726F00AA2539 /* Assets.xcassets */,
-				EEE4AEC61EAD726F00AA2539 /* LaunchScreen.storyboard */,
+				EEE4AF001EAD8EB600AA2539 /* Classes */,
+				EEE4AF301EAD910100AA2539 /* Main.storyboard */,
+				EEE4AF311EAD910100AA2539 /* Menu.storyboard */,
+				EEE4AF321EAD910100AA2539 /* LaunchScreen.storyboard */,
 				EEE4AEC91EAD726F00AA2539 /* Info.plist */,
+				EEE4AEF81EAD8DC900AA2539 /* config.plist */,
+				EEE4AEF91EAD8DC900AA2539 /* Localizable.strings */,
+				EEE4AEF61EAD8DB900AA2539 /* Device.js */,
+				EEE4AEC41EAD726F00AA2539 /* Assets.xcassets */,
+				EEE4AEF51EAD8DAB00AA2539 /* Supporting Files */,
 			);
 			path = FilhoEscola;
+			sourceTree = "<group>";
+		};
+		EEE4AECF1EAD8D2A00AA2539 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				EEE4AEE91EAD8D9400AA2539 /* App.swift */,
+				EEE4AEEA1EAD8D9400AA2539 /* HRToast+UIView.swift */,
+				EEE4AEEB1EAD8D9400AA2539 /* Service.swift */,
+				EEE4AEEC1EAD8D9400AA2539 /* AppViewController.swift */,
+				EEE4AEED1EAD8D9400AA2539 /* Model.swift */,
+				EEE4AEEE1EAD8D9400AA2539 /* Trouble.swift */,
+				EEE4AED21EAD8D7100AA2539 /* Http */,
+				EEE4AED11EAD8D6500AA2539 /* Utils */,
+				EEE4AED01EAD8D5300AA2539 /* Widget */,
+			);
+			name = Library;
+			sourceTree = "<group>";
+		};
+		EEE4AED01EAD8D5300AA2539 /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				EEE4AEDD1EAD8D8700AA2539 /* DateField.swift */,
+				EEE4AEDE1EAD8D8700AA2539 /* PickerField.swift */,
+				EEE4AEDF1EAD8D8700AA2539 /* TextField.swift */,
+				EEE4AEE01EAD8D8700AA2539 /* Button.swift */,
+				EEE4AEE11EAD8D8700AA2539 /* View.swift */,
+				EEE4AEE21EAD8D8700AA2539 /* CircleView.swift */,
+			);
+			name = Widget;
+			sourceTree = "<group>";
+		};
+		EEE4AED11EAD8D6500AA2539 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				EEE4AED51EAD8D8000AA2539 /* DateUtils.swift */,
+				EEE4AED61EAD8D8000AA2539 /* NumberUtils.swift */,
+				EEE4AED71EAD8D8000AA2539 /* TextUtils.swift */,
+				EEE4AED81EAD8D8000AA2539 /* ViewUtils.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		EEE4AED21EAD8D7100AA2539 /* Http */ = {
+			isa = PBXGroup;
+			children = (
+				EEE4AED31EAD8D7900AA2539 /* HttpStatus.swift */,
+			);
+			name = Http;
+			sourceTree = "<group>";
+		};
+		EEE4AEF51EAD8DAB00AA2539 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EEE4AEFD1EAD8E2F00AA2539 /* SWRevealViewController.h */,
+				EEE4AEFE1EAD8E2F00AA2539 /* SWRevealViewController.m */,
+				EEE4AEFC1EAD8E2F00AA2539 /* FilhoEscola-Bridging-Header.h */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EEE4AF001EAD8EB600AA2539 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				EEE4AF051EAD8EE000AA2539 /* Realm */,
+				EEE4AF041EAD8ED800AA2539 /* Model */,
+				EEE4AF021EAD8ECA00AA2539 /* Controller */,
+				EEE4AF031EAD8ED200AA2539 /* Service */,
+				EEE4AF141EAD8FC900AA2539 /* FilhoEscola.swift */,
+				EEE4AF151EAD8FC900AA2539 /* AppDelegate.swift */,
+				EEE4AF161EAD8FC900AA2539 /* AppURLProtocol.swift */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		EEE4AF021EAD8ECA00AA2539 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				EEE4AF201EAD90D200AA2539 /* FrontViewController.swift */,
+				EEE4AF211EAD90D200AA2539 /* DrawerViewController.swift */,
+				EEE4AF221EAD90D200AA2539 /* MenuTableViewController.swift */,
+				EEE4AF231EAD90D200AA2539 /* WebViewController.swift */,
+				EEE4AF241EAD90D200AA2539 /* CacheViewController.swift */,
+				EEE4AF251EAD90D200AA2539 /* InicialViewController.swift */,
+				EEE4AF261EAD90D200AA2539 /* AcessoViewController.swift */,
+				EEE4AF271EAD90D200AA2539 /* CodigoViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		EEE4AF031EAD8ED200AA2539 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				EEE4AF361EAD988100AA2539 /* FileService.swift */,
+				EEE4AF371EAD988100AA2539 /* CacheService.swift */,
+				EEE4AF381EAD988100AA2539 /* DispositivoService.swift */,
+			);
+			name = Service;
+			sourceTree = "<group>";
+		};
+		EEE4AF041EAD8ED800AA2539 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EEE4AF081EAD8F6800AA2539 /* CacheModel.swift */,
+				EEE4AF091EAD8F6800AA2539 /* DispositivoModel.swift */,
+				EEE4AF0A1EAD8F6800AA2539 /* ResultModel.swift */,
+				EEE4AF0B1EAD8F6800AA2539 /* ViewModel.swift */,
+				EEE4AF0C1EAD8F6800AA2539 /* ToolbarModel.swift */,
+				EEE4AF0D1EAD8F6800AA2539 /* ButtonModel.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		EEE4AF051EAD8EE000AA2539 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				EEE4AF061EAD8EED00AA2539 /* Cache.swift */,
+			);
+			name = Realm;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +302,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EEE4AECC1EAD726F00AA2539 /* Build configuration list for PBXNativeTarget "FilhoEscola" */;
 			buildPhases = (
+				97B3AE252ED9C48C9A90F68D /* [CP] Check Pods Manifest.lock */,
 				EEE4AEB61EAD726F00AA2539 /* Sources */,
 				EEE4AEB71EAD726F00AA2539 /* Frameworks */,
 				EEE4AEB81EAD726F00AA2539 /* Resources */,
+				6E8B8B1FE62AF08394833711 /* [CP] Embed Pods Frameworks */,
+				97044648E4AFE5680B348685 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -97,6 +331,7 @@
 					EEE4AEB91EAD726F00AA2539 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = A5AW2855YQ;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -124,44 +359,114 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EEE4AEC81EAD726F00AA2539 /* LaunchScreen.storyboard in Resources */,
+				EEE4AEF71EAD8DB900AA2539 /* Device.js in Resources */,
+				EEE4AF331EAD910100AA2539 /* Main.storyboard in Resources */,
+				EEE4AEFB1EAD8DC900AA2539 /* Localizable.strings in Resources */,
+				EEE4AF341EAD910100AA2539 /* Menu.storyboard in Resources */,
+				EEE4AF351EAD910100AA2539 /* LaunchScreen.storyboard in Resources */,
 				EEE4AEC51EAD726F00AA2539 /* Assets.xcassets in Resources */,
-				EEE4AEC31EAD726F00AA2539 /* Main.storyboard in Resources */,
+				EEE4AEFA1EAD8DC900AA2539 /* config.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6E8B8B1FE62AF08394833711 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FilhoEscola/Pods-FilhoEscola-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		97044648E4AFE5680B348685 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FilhoEscola/Pods-FilhoEscola-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		97B3AE252ED9C48C9A90F68D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EEE4AEB61EAD726F00AA2539 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EEE4AEC01EAD726F00AA2539 /* ViewController.swift in Sources */,
-				EEE4AEBE1EAD726F00AA2539 /* AppDelegate.swift in Sources */,
+				EEE4AEE41EAD8D8700AA2539 /* PickerField.swift in Sources */,
+				EEE4AEDC1EAD8D8000AA2539 /* ViewUtils.swift in Sources */,
+				EEE4AEE51EAD8D8700AA2539 /* TextField.swift in Sources */,
+				EEE4AEDA1EAD8D8000AA2539 /* NumberUtils.swift in Sources */,
+				EEE4AF291EAD90D200AA2539 /* DrawerViewController.swift in Sources */,
+				EEE4AF111EAD8F6800AA2539 /* ViewModel.swift in Sources */,
+				EEE4AEEF1EAD8D9400AA2539 /* App.swift in Sources */,
+				EEE4AEDB1EAD8D8000AA2539 /* TextUtils.swift in Sources */,
+				EEE4AF2D1EAD90D200AA2539 /* InicialViewController.swift in Sources */,
+				EEE4AF071EAD8EED00AA2539 /* Cache.swift in Sources */,
+				EEE4AEFF1EAD8E2F00AA2539 /* SWRevealViewController.m in Sources */,
+				EEE4AF191EAD8FC900AA2539 /* AppURLProtocol.swift in Sources */,
+				EEE4AEE31EAD8D8700AA2539 /* DateField.swift in Sources */,
+				EEE4AED91EAD8D8000AA2539 /* DateUtils.swift in Sources */,
+				EEE4AF3B1EAD988100AA2539 /* DispositivoService.swift in Sources */,
+				EEE4AF3A1EAD988100AA2539 /* CacheService.swift in Sources */,
+				EEE4AEF31EAD8D9400AA2539 /* Model.swift in Sources */,
+				EEE4AF391EAD988100AA2539 /* FileService.swift in Sources */,
+				EEE4AF121EAD8F6800AA2539 /* ToolbarModel.swift in Sources */,
+				EEE4AEF11EAD8D9400AA2539 /* Service.swift in Sources */,
+				EEE4AF2E1EAD90D200AA2539 /* AcessoViewController.swift in Sources */,
+				EEE4AEF21EAD8D9400AA2539 /* AppViewController.swift in Sources */,
+				EEE4AF2B1EAD90D200AA2539 /* WebViewController.swift in Sources */,
+				EEE4AEE81EAD8D8700AA2539 /* CircleView.swift in Sources */,
+				EEE4AEE71EAD8D8700AA2539 /* View.swift in Sources */,
+				EEE4AEF41EAD8D9400AA2539 /* Trouble.swift in Sources */,
+				EEE4AEF01EAD8D9400AA2539 /* HRToast+UIView.swift in Sources */,
+				EEE4AF0F1EAD8F6800AA2539 /* DispositivoModel.swift in Sources */,
+				EEE4AF101EAD8F6800AA2539 /* ResultModel.swift in Sources */,
+				EEE4AF181EAD8FC900AA2539 /* AppDelegate.swift in Sources */,
+				EEE4AF131EAD8F6800AA2539 /* ButtonModel.swift in Sources */,
+				EEE4AF2A1EAD90D200AA2539 /* MenuTableViewController.swift in Sources */,
+				EEE4AED41EAD8D7900AA2539 /* HttpStatus.swift in Sources */,
+				EEE4AF2C1EAD90D200AA2539 /* CacheViewController.swift in Sources */,
+				EEE4AF281EAD90D200AA2539 /* FrontViewController.swift in Sources */,
+				EEE4AF171EAD8FC900AA2539 /* FilhoEscola.swift in Sources */,
+				EEE4AF0E1EAD8F6800AA2539 /* CacheModel.swift in Sources */,
+				EEE4AF2F1EAD90D200AA2539 /* CodigoViewController.swift in Sources */,
+				EEE4AEE61EAD8D8700AA2539 /* Button.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		EEE4AEC11EAD726F00AA2539 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EEE4AEC21EAD726F00AA2539 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		EEE4AEC61EAD726F00AA2539 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EEE4AEC71EAD726F00AA2539 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		EEE4AECA1EAD726F00AA2539 /* Debug */ = {
@@ -261,26 +566,33 @@
 		};
 		EEE4AECD1EAD726F00AA2539 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D3C30380CB4536B1234D79D8 /* Pods-FilhoEscola.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = A5AW2855YQ;
 				INFOPLIST_FILE = FilhoEscola/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.wasys.FilhoEscola;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FilhoEscola/FilhoEscola-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		EEE4AECE1EAD726F00AA2539 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CAC51ECEDB7B18A7644D067C /* Pods-FilhoEscola.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = A5AW2855YQ;
 				INFOPLIST_FILE = FilhoEscola/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.wasys.FilhoEscola;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FilhoEscola/FilhoEscola-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -304,6 +616,7 @@
 				EEE4AECE1EAD726F00AA2539 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
