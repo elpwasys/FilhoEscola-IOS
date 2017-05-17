@@ -16,9 +16,27 @@
 "Label.Cache" = "Cache";
 "Label.Limpar" = "Limpar";
 "Label.Versao" = "Versão";
+"Label.Diaria" = "Diária";
+"Label.Mensal" = "Mensal";
+"Label.Semanal" = "Semanal";
 
 
 /* Message */
 "Message.CodigoInvalido" = "Código inválido!";
 "Message.SairAplicativo" = "Deseja sair do aplicativo?";
 "Message.Cache" = "O aplicativo armazena dados para tornar a sua navegação mais rápida.\nCaso alguma informação esteja desatualizada, você pode forçar a atualização pressionando o botão 'Limpar'";
+
+/* Mensagem.Assunto */
+"Mensagem.Assunto.prova" = "Prova";
+"Mensagem.Assunto.mensagem" = "Mensagem";
+"Mensagem.Assunto.atividade" = "Atividade";
+"Mensagem.Assunto.informacao" = "Informação";
+
+/* Funcionario.Tipo */
+"Funcionario.Tipo.principal" = "Administrador";
+"Funcionario.Tipo.professor" = "Professor";
+"Funcionario.Tipo.secretaria" = "Secretaria";
+
+"Fake.Conteudo.Mensagem.1" = "Nesse dia, seguirá para os pais dos alunos inscritos do Maternal I ao Jardim II, uma circular com informações sobre o Encerramento da Educação Infantil 2016.";
+
+"Fake.Conteudo.Mensagem.2" = "Finalização do projeto de responsabilidade dos alunos dos 5 anos - Água e Energia. Os aluno receberão os colegas do Boqueirão para uma gincana";

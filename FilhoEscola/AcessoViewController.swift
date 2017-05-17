@@ -47,7 +47,7 @@ class AcessoViewController: AppViewController {
         if let nome = nomeTextField.text, let celular = celularTextField.text, let dataNascimento = nascimentoDateField.date {
             let prefixo = celular.substring(with: 1..<3)
             let numero = celular.substring(from: 5).replacingOccurrences(of: "-", with: "")
-            let dispositivo = DispositivoModel(uuid: Device.uuid, nome: nome, numero: numero, prefixo: prefixo, dataNascimento: dataNascimento)
+            let dispositivo = Dispositivo(uuid: Device.uuid, nome: nome, numero: numero, prefixo: prefixo, dataNascimento: dataNascimento)
             showActivityIndicator()
             let observable = DispositivoService.Async.confirmar(model: dispositivo)
             prepare(for: observable)
@@ -66,7 +66,7 @@ class AcessoViewController: AppViewController {
         }
     }
     
-    private func decideScene(model: DispositivoModel) {
+    private func decideScene(model: Dispositivo) {
         var identifier = "Scene.Codigo"
         if model.status == .verificado {
             identifier = "Scene.BemVindo"

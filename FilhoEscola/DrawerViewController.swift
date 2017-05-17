@@ -10,11 +10,15 @@ import UIKit
 
 class DrawerViewController: AppViewController, SWRevealViewControllerDelegate {
 
+    @IBOutlet weak var drawerButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if let controller = revealViewController() {
             controller.delegate = self
             view.addGestureRecognizer(controller.panGestureRecognizer())
+            drawerButton.target = controller
+            drawerButton.action = #selector(SWRevealViewController.revealToggle(_:))
         }
     }
 

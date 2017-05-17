@@ -1,61 +1,115 @@
 //
-//  Getdoc.swift
-//  GetDocAg
+//  FilhoEscola.swift
+//  FilhoEscola
 //
 //  Created by Everton Luiz Pascke on 08/02/17.
 //  Copyright © 2017 Everton Luiz Pascke. All rights reserved.
 //
 
 import Foundation
+import ObjectMapper
 
-class AppAcesso {
-    private static let validKey = "\(AppAcesso.self).validKey"
-    static var isValid: Bool {
+class Dispositivo: Mappable {
+    
+    var status: Status = .naoVerificado
+    
+    var uuid: String!
+    var nome: String!
+    var token: String!
+    var numero: String!
+    var prefixo: String!
+    var dataNascimento: Date!
+    
+    static var current: Dispositivo? {
         get {
-            guard let valid = UserDefaults.standard.value(forKey: validKey) as? Bool else {
-                return false
+            var model: Dispositivo?
+            let defaults = UserDefaults.standard
+            if let uuid = defaults.value(forKey: uuid) as? String,
+                let nome = defaults.value(forKey: nome) as? String,
+                let numero = defaults.value(forKey: numero) as? String,
+                let prefixo = defaults.value(forKey: prefixo) as? String,
+                let dataNascimento = defaults.value(forKey: dataNascimento) as? Date {
+                model = Dispositivo(uuid: uuid, nome: nome, numero: numero, prefixo: prefixo, dataNascimento: dataNascimento)
+                if let value = defaults.value(forKey: token) as? String {
+                    model?.token = value
+                }
+                if let rawValue = defaults.value(forKey: status) as? String, let value = Status.init(rawValue: rawValue) {
+                    model?.status = value
+                }
             }
-            return valid
+            return model
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: validKey)
-        }
-    }
-}
-
-class AppUser {
-    let id: Int
-    let name: String
-    var pushToken: String? {
-        didSet {
-            if self.pushToken == nil {
-                UserDefaults.standard.removeObject(forKey: AppUser.userPushTokenKey)
+            let defaults = UserDefaults.standard
+            if let model = newValue {
+                defaults.set(model.uuid, forKey: uuid)
+                defaults.set(model.nome, forKey: nome)
+                defaults.set(model.status.rawValue, forKey: status)
+                defaults.set(model.numero, forKey: numero)
+                defaults.set(model.prefixo, forKey: prefixo)
+                defaults.set(model.dataNascimento, forKey: dataNascimento)
+                if model.token != nil {
+                    defaults.set(model.token, forKey: token)
+                }
             } else {
-                UserDefaults.standard.set(self.pushToken, forKey: AppUser.userPushTokenKey)
+                defaults.removeObject(forKey: uuid)
+                defaults.removeObject(forKey: nome)
+                defaults.removeObject(forKey: token)
+                defaults.removeObject(forKey: status)
+                defaults.removeObject(forKey: numero)
+                defaults.removeObject(forKey: prefixo)
+                defaults.removeObject(forKey: dataNascimento)
             }
         }
     }
-    private static let userIdKey = "\(AppUser.self).id"
-    private static let userNameKey = "\(AppUser.self).name"
-    private static let userPushTokenKey = "\(AppUser.self).pushToken"
-    static var current: AppUser? {
-        guard let id = UserDefaults.standard.value(forKey: userIdKey) as? Int, let name = UserDefaults.standard.value(forKey: userNameKey) as? String else {
-            return nil
+    
+    enum Status: String {
+        case verificado = "VERIFICADO"
+        case naoVerificado = "NAO_VERIFICADO"
+    }
+    
+    private static let uuid = "\(Dispositivo.self).uuid"
+    private static let nome = "\(Dispositivo.self).name"
+    private static let token = "\(Dispositivo.self).token"
+    private static let status = "\(Dispositivo.self).status"
+    private static let numero = "\(Dispositivo.self).numero"
+    private static let prefixo = "\(Dispositivo.self).prefixo"
+    private static let dataNascimento = "\(Dispositivo.self).dataNascimento"
+    
+    init(uuid: String, nome: String, numero: String, prefixo: String, dataNascimento: Date) {
+        self.uuid = uuid
+        self.nome = nome
+        self.numero = numero
+        self.prefixo = prefixo
+        self.dataNascimento = dataNascimento
+    }
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        uuid <- map["uuid"]
+        nome <- map["nome"]
+        token <- map["token"]
+        status <- map["status"]
+        numero <- map["numero"]
+        prefixo <- map["prefixo"]
+        dataNascimento <- (map["dataNascimento"], DateTransformType())
+    }
+    
+    func dictonary() -> [String: String] {
+        var hash:[String: String] = [
+            "uuid": uuid,
+            "nome": nome,
+            "numero": numero,
+            "prefixo": prefixo,
+            "dataNascimento": DateUtils.format(dataNascimento, type: .dateBr)
+        ]
+        if let token = self.token {
+            hash["token"] = token
         }
-        let user = AppUser(id: id, name: name)
-        user.pushToken = UserDefaults.standard.value(forKey: userPushTokenKey) as? String
-        return user
-    }
-    init(id: Int, name: String) {
-        self.id = id
-        self.name = name
-        UserDefaults.standard.set(id, forKey: AppUser.userIdKey)
-        UserDefaults.standard.set(name, forKey: AppUser.userNameKey)
-    }
-    static func clear() {
-        UserDefaults.standard.removeObject(forKey: userIdKey)
-        UserDefaults.standard.removeObject(forKey: userNameKey)
-        UserDefaults.standard.removeObject(forKey: userPushTokenKey)
+        return hash
     }
 }
 
@@ -103,17 +157,31 @@ class Config {
 
 extension Device {
     enum Header: String {
-        case userId = "User-ID"
-        case deviceSO = "Device-SO"
         case deviceID = "Device-ID"
+        case deviceSO = "Device-SO"
+        case deviceToken = "Device-Token"
+        case deviceModel = "Device-Model"
+        case deviceWidth = "Device-Width"
+        case deviceHeight = "Device-Height"
+        case deviceSOVersion = "Device-SO-Version"
+        case deviceAppVersion = "Device-App-Version"
     }
     static var headers: [String: String] {
         var headers = [
             Device.Header.deviceSO.rawValue: Device.so,
-            Device.Header.deviceID.rawValue: Device.uuid
+            Device.Header.deviceID.rawValue: Device.uuid,
+            Device.Header.deviceModel.rawValue: Device.model,
+            Device.Header.deviceWidth.rawValue: "\(Device.width)",
+            Device.Header.deviceHeight.rawValue: "\(Device.height)",
+            Device.Header.deviceSOVersion.rawValue: Device.systemVersion
         ]
-        if let user = AppUser.current {
-            headers[Device.Header.userId.rawValue] = "\(user.id)"
+        if let version = Device.appVersion {
+            headers[Device.Header.deviceAppVersion.rawValue] = version
+        }
+        if let dispositivo = Dispositivo.current {
+            if dispositivo.token != nil {
+                headers[Device.Header.deviceToken.rawValue] = dispositivo.token
+            }
         }
         return headers
     }

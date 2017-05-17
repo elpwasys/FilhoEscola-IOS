@@ -13,45 +13,45 @@ import Alamofire
 
 class DispositivoService: Service {
     
-    static func verificar(prefixo: String, numero: String, codigo: String) throws -> DispositivoModel {
+    static func verificar(prefixo: String, numero: String, codigo: String) throws -> Dispositivo {
         let url = "\(Config.restURL)/dispositivo/verificar/\(prefixo)/\(numero)/\(codigo)"
-        let response: DataResponse<DispositivoModel> = Alamofire.request(url, method: .get, encoding: JSONEncoding.default, headers: Device.headers).parse()
+        let response: DataResponse<Dispositivo> = Alamofire.request(url, method: .get, encoding: JSONEncoding.default, headers: Device.headers).parse()
         let result = response.result
         if result.isFailure {
             throw result.error!
         }
         let model = result.value!
-        DispositivoModel.current = model
+        Dispositivo.current = model
         return model
     }
     
-    static func reenviar(prefixo: String, numero: String) throws -> DispositivoModel {
+    static func reenviar(prefixo: String, numero: String) throws -> Dispositivo {
         let url = "\(Config.restURL)/dispositivo/reenviar/\(prefixo)/\(numero)"
-        let response: DataResponse<DispositivoModel> = Alamofire.request(url, method: .get, encoding: JSONEncoding.default, headers: Device.headers).parse()
+        let response: DataResponse<Dispositivo> = Alamofire.request(url, method: .get, encoding: JSONEncoding.default, headers: Device.headers).parse()
         let result = response.result
         if result.isFailure {
             throw result.error!
         }
         let model = result.value!
-        DispositivoModel.current = model
+        Dispositivo.current = model
         return model
     }
     
-    static func confirmar(model: DispositivoModel) throws -> DispositivoModel {
+    static func confirmar(model: Dispositivo) throws -> Dispositivo {
         let url = "\(Config.restURL)/dispositivo/confirmar"
         let dictionary = model.dictonary()
-        let response: DataResponse<DispositivoModel> = Alamofire.request(url, method: .post, parameters: dictionary, encoding: JSONEncoding.default, headers: Device.headers).parse()
+        let response: DataResponse<Dispositivo> = Alamofire.request(url, method: .post, parameters: dictionary, encoding: JSONEncoding.default, headers: Device.headers).parse()
         let result = response.result
         if result.isFailure {
             throw result.error!
         }
         let model = result.value!
-        DispositivoModel.current = model
+        Dispositivo.current = model
         return model
     }
     
     class Async {
-        static func verificar(prefixo: String, numero: String, codigo: String) -> Observable<DispositivoModel> {
+        static func verificar(prefixo: String, numero: String, codigo: String) -> Observable<Dispositivo> {
             return Observable.create { observer in
                 do {
                     let result = try DispositivoService.verificar(prefixo: prefixo, numero: numero, codigo: codigo)
@@ -63,7 +63,7 @@ class DispositivoService: Service {
                 return Disposables.create()
             }
         }
-        static func reenviar(prefixo: String, numero: String) -> Observable<DispositivoModel> {
+        static func reenviar(prefixo: String, numero: String) -> Observable<Dispositivo> {
             return Observable.create { observer in
                 do {
                     let result = try DispositivoService.reenviar(prefixo: prefixo, numero: numero)
@@ -75,7 +75,7 @@ class DispositivoService: Service {
                 return Disposables.create()
             }
         }
-        static func confirmar(model: DispositivoModel) -> Observable<DispositivoModel> {
+        static func confirmar(model: Dispositivo) -> Observable<Dispositivo> {
             return Observable.create { observer in
                 do {
                     let result = try DispositivoService.confirmar(model: model)

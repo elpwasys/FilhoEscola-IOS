@@ -20,15 +20,12 @@ fileprivate enum Scheme: String {
 class WebViewController: DrawerViewController {
 
     @IBOutlet weak var webView: UIWebView!
-    @IBOutlet weak var drawerButton: UIBarButtonItem!
     
     var link: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         webView.delegate = self
-        drawerButton.target = revealViewController()
-        drawerButton.action = #selector(SWRevealViewController.revealToggle(_:))
         carregar()
     }
 

@@ -25,7 +25,7 @@ class InicialViewController: AppViewController {
     
     private func navigate() {
         var identifier = "Scene.Acesso"
-        if let dispositivo = DispositivoModel.current {
+        if let dispositivo = Dispositivo.current {
             identifier = "Scene.Codigo"
             if dispositivo.status == .verificado {
                 identifier = "Scene.Reveal"

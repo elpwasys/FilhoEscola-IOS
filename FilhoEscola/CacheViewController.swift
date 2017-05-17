@@ -12,7 +12,6 @@ class CacheViewController: DrawerViewController {
     
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var versionLabel: UILabel!
-    @IBOutlet weak var drawerButton: UIBarButtonItem!
     
     @IBOutlet weak var limparButton: Button!
     

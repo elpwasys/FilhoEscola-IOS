@@ -60,7 +60,7 @@ class CodigoViewController: AppViewController {
     }
     
     private func validar() {
-        if isValid, let dispositivo = DispositivoModel.current {
+        if isValid, let dispositivo = Dispositivo.current {
             showActivityIndicator()
             let codigo = "\(numeroTextField1.text!)\(numeroTextField2.text!)\(numeroTextField3.text!)\(numeroTextField4.text!)\(numeroTextField5.text!)\(numeroTextField6.text!)"
             let observable = DispositivoService.Async.verificar(prefixo: dispositivo.prefixo, numero: dispositivo.numero, codigo: codigo)
@@ -86,7 +86,7 @@ class CodigoViewController: AppViewController {
     }
 
     private func reenviar() {
-        if let dispositivo = DispositivoModel.current {
+        if let dispositivo = Dispositivo.current {
             showActivityIndicator()
             let observable = DispositivoService.Async.reenviar(prefixo: dispositivo.prefixo, numero: dispositivo.numero)
             prepare(for: observable)

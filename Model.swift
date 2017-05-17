@@ -10,7 +10,7 @@ import ObjectMapper
 
 class Model: Mappable {
     
-    var id: Int?
+    var id: Int!
     
     init() {
         

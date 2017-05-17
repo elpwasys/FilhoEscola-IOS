@@ -22,7 +22,7 @@ class MenuTableViewController: UITableViewController {
         self.clearsSelectionOnViewWillAppear = false
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        if let dispositivo = DispositivoModel.current {
+        if let dispositivo = Dispositivo.current {
             ViewUtils.text(dispositivo.nome, for: nomeLabel)
         }
     }
@@ -35,19 +35,23 @@ class MenuTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var link: String!
         if indexPath.row == 0 {
-            link = "club/consulta.xhtml"
+            link = "aluno/configuracao.xhtml"
+        } else if indexPath.row == 1 {
+            //link = "club/assinatura.xhtml"
+        } else if indexPath.row == 2 {
+            link = "aluno/configuracao.xhtml"
+        } else if indexPath.row == 3 {
+            let controller = storyboard?.instantiateViewController(withIdentifier: "Scene.Mensagem")
+            revealViewController().pushFrontViewController(controller, animated: true)
+        } else if indexPath.row == 5 {
+            let navigation = storyboard?.instantiateViewController(withIdentifier: "Scene.Cache")
+            revealViewController().pushFrontViewController(navigation, animated: true)
         }
-        else if indexPath.row == 1 {
-            link = "club/assinatura.xhtml"
-        }
+        
         if link != nil {
             let navigation = storyboard?.instantiateViewController(withIdentifier: "Scene.Web")
             let controller = navigation?.childViewControllers.first as! WebViewController
             controller.link = link
-            revealViewController().pushFrontViewController(navigation, animated: true)
-        }
-        else if indexPath.row == 4 {
-            let navigation = storyboard?.instantiateViewController(withIdentifier: "Scene.Cache")
             revealViewController().pushFrontViewController(navigation, animated: true)
         }
     }
@@ -58,7 +62,7 @@ class MenuTableViewController: UITableViewController {
     
     private func sair() {
         if let controller = storyboard?.instantiateViewController(withIdentifier: "Scene.Inicial") {
-            DispositivoModel.current = nil
+            Dispositivo.current = nil
             try? CacheService.clear()
             present(controller, animated: true, completion: nil)
         }

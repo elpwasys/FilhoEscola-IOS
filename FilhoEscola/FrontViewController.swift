@@ -9,14 +9,9 @@
 import UIKit
 
 class FrontViewController: DrawerViewController {
-
-    @IBOutlet weak var drawerButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        drawerButton.target = revealViewController()
-        drawerButton.action = #selector(SWRevealViewController.revealToggle(_:))        
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,7 +22,7 @@ class FrontViewController: DrawerViewController {
     override func viewDidAppear(_ animated: Bool) {
         let navigation = storyboard?.instantiateViewController(withIdentifier: "Scene.Web")
         let controller = navigation?.childViewControllers.first as! WebViewController
-        controller.link = "club/consulta.xhtml"
+        controller.link = "aluno/configuracao.xhtml"
         revealViewController().pushFrontViewController(navigation, animated: true)
     }
 }

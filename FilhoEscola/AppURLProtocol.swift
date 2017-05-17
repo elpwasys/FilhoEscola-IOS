@@ -52,7 +52,6 @@ class AppURLProtocol: URLProtocol {
         } else {
             if let request = (self.request as NSURLRequest).mutableCopy() as? NSMutableURLRequest {
                 request.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
-                //request.timeoutInterval = 2000
                 URLProtocol.setProperty(true, forKey: AppURLProtocol.handleKey, in: request)
                 for (key, value) in Device.headers {
                     request.setValue(value, forHTTPHeaderField: key)
