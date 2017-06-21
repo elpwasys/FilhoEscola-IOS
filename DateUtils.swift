@@ -64,6 +64,12 @@ public class DateUtils {
         return formatter.string(from: date)
     }
     
+    public static func truncat(date: Date) -> Date {
+        let text = DateUtils.format(date, type: .dateBr)
+        let newdate = DateUtils.parse(text, type: .dateBr)
+        return newdate!
+    }
+    
     private static func parse(_ text: String, patterns: [String]) -> Date? {
         let formatter = DateFormatter()
         formatter.locale = App.locale

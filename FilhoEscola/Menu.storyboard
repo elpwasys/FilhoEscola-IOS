@@ -432,24 +432,6 @@
             </objects>
             <point key="canvasLocation" x="5981.6000000000004" y="1064.6176911544228"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="U7t-3u-mqZ">
-            <objects>
-                <viewController id="VNA-eB-u7a" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="uDk-aI-3KO"/>
-                        <viewControllerLayoutGuide type="bottom" id="Z5t-2k-zdo"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="7wO-sL-ALO">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="F44-4v-hqg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="6925" y="1130"/>
-        </scene>
         <!--Mensagem Diaria View Controller-->
         <scene sceneID="xge-K3-wDO">
             <objects>
@@ -477,6 +459,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="mPz-dp-0Ds">
                         <barButtonItem key="leftBarButtonItem" image="DrawerIcon" id="9U3-eK-NV9"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="blS-vT-6TX">
+                            <connections>
+                                <action selector="onRefreshTapped:" destination="6eW-u6-tc5" id="maJ-C4-mIb"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="drawerButton" destination="9U3-eK-NV9" id="aMe-U0-Mwa"/>

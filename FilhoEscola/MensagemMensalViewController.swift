@@ -8,22 +8,11 @@
 
 import UIKit
 
-class MensagemMensalModel {
-    
-    var aluno: AlunoModel
-    var mensagens: [Date: [MensagemModel]]?
-    
-    init(aluno: AlunoModel, mensagens: [Date: [MensagemModel]]?) {
-        self.aluno = aluno
-        self.mensagens = mensagens
-    }
-}
-
 class MensagemMensalViewController: DrawerViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var rows = [MensagemMensalModel]()
+    var rows = [MensagemCellModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,45 +33,36 @@ class MensagemMensalViewController: DrawerViewController {
     }
     
     private func carregar() {
-        for i in 1...5 {
-            let aluno = AlunoModel()
-            if i % 2 == 0 {
-                aluno.foto = UIImageJPEGRepresentation(UIImage(named: "aluno1.jpg")!, 1)
-            } else {
-                aluno.foto = UIImageJPEGRepresentation(UIImage(named: "aluno2.jpg")!, 1)
-            }
-            aluno.nome = "Nome do aluno \(i)"
-            aluno.nomeMae = "Mãe do aluno \(i)"
-            aluno.dataNascimento = Date()
-            var mensagens = [MensagemModel]()
-            for j in i...5 {
-                let mensagem = MensagemModel()
-                mensagem.data = Date()
-                mensagem.escola = EscolaModel()
-                mensagem.escola.nome = "Escola \(j)"
-                if j % 2 == 0 {
-                    mensagem.assunto = .prova
-                    mensagem.conteudo = TextUtils.localized(forKey: "Fake.Conteudo.Mensagem.1")
-                    mensagem.escola.logo = UIImageJPEGRepresentation(UIImage(named: "escola1.jpg")!, 1)
-                } else {
-                    mensagem.assunto = .informacao
-                    mensagem.conteudo = TextUtils.localized(forKey: "Fake.Conteudo.Mensagem.2")
-                    mensagem.escola.logo = UIImageJPEGRepresentation(UIImage(named: "escola2.jpg")!, 1)
+        showActivityIndicator()
+        let observable = MensagemService.Async.buscar()
+        prepare(for: observable)
+            .subscribe(
+                onNext: { values in
+                    self.carregar(values)
+                },
+                onError: { error in
+                    self.hideActivityIndicator()
+                    self.handle(error)
+                },
+                onCompleted: {
+                    self.hideActivityIndicator()
                 }
-                mensagens.append(mensagem)
-            }
-            aluno.mensagens = mensagens
-            let row = MensagemMensalModel(aluno: aluno, mensagens: nil)
-            rows.append(row)
-        }
+            ).addDisposableTo(disposableBag)
+        
+    }
+    
+    private func carregar(_ rows: [MensagemCellModel]) {
+        self.rows = rows
+        self.tableView.reloadData()
     }
 }
 
 extension MensagemMensalViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let aluno = rows[section].aluno
-        let header = Header.create(aluno, owner: tableView)
+        let key = rows[section].key
+        let count = rows[section].count
+        let header = Header.create(key, count: count, owner: tableView)
         return header
     }
     
@@ -122,11 +102,24 @@ extension MensagemMensalViewController: UITableViewDataSource {
         var cell: UITableViewCell
         if row == 0 {
             let mensagemCell = tableView.dequeueReusableCell(withIdentifier: MensagemMensalTableViewCell.reusableCellIdentifier, for: indexPath) as! MensagemMensalTableViewCell
+            let mensagem = rows[indexPath.section]
+            mensagemCell.popular(mensagem, owner: self)
             cell = mensagemCell
         } else {
             cell = tableView.dequeueReusableCell(withIdentifier: SeparatorTableViewCell.reusableCellIdentifier, for: indexPath) as! SeparatorTableViewCell
         }
         return cell
+    }
+}
+
+extension MensagemMensalViewController: MensagemMensalTableViewCellDelegate {
+    
+    func onOpenCalendarTapped(_ model: MensagemCellModel) {
+        let controller = MensagemCalendarViewController.create(model)
+        controller.hidesBottomBarWhenPushed = true
+        if let navigation = self.navigationController {
+            navigation.pushViewController(controller, animated: true)
+        }
     }
 }
 

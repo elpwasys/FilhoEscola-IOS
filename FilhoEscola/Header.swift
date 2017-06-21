@@ -18,13 +18,15 @@ class Header: UIView {
         return 65
     }
     
-    static func create(_ aluno: AlunoModel, owner: Any?) -> Header {
+    static func create(_ key: AlunoKey, count: Int, owner: Any?) -> Header {
         let header = Bundle.main.loadNibNamed("Header", owner: owner, options: nil)?.first as! Header
-        ViewUtils.text(aluno.nome, for: header.nomeLabel)
-        ViewUtils.text(aluno.mensagens?.count ?? 0, for: header.quantidadeLabel)
-        if let data = aluno.foto {
+        ViewUtils.text(key.nome, for: header.nomeLabel)
+        ViewUtils.text(count, for: header.quantidadeLabel)
+        /*
+        if let data = key.foto {
             header.fotoImageView.image = UIImage(data: data)
         }
+         */
         return header
     }
 }

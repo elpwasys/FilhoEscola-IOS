@@ -5,11 +5,13 @@
 	<key>Protocol</key>
 	<string>http</string>
 	<key>Host</key>
-	<string>192.168.100.12</string>
+	<string>192.168.25.99</string>
 	<key>Port</key>
 	<string>8080</string>
 	<key>ContextApp</key>
 	<string>filhoescola</string>
+	<key>ContextFile</key>
+	<string>file</string>
 	<key>ContextRest</key>
 	<string>rest</string>
 	<key>ContextMobile</key>

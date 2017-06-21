@@ -136,6 +136,10 @@ class Config {
     static var `protocol`: String {
         return value(forKey: "Protocol")
     }
+    static var fileURL: String {
+        let contextFile = value(forKey: "ContextFile")
+        return "\(Config.baseURL)/\(contextFile)"
+    }
     static var restURL: String {
         let contextRest = value(forKey: "ContextRest")
         return "\(Config.baseURL)/\(contextRest)"

@@ -14,6 +14,10 @@ class ViewUtils {
         label.text = TextUtils.text(value)
     }
     
+    static func text(_ value: Any?, for field: UITextView) {
+        field.text = TextUtils.text(value)
+    }
+    
     static func text(_ value: Any?, for field: UITextField) {
         field.text = TextUtils.text(value)
     }

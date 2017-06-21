@@ -17,4 +17,11 @@ class ImagemModel: Model {
         super.mapping(map: map)
         caminho <- map["caminho"]
     }
+    
+    static func from(_ imagem: Imagem) -> ImagemModel {
+        let model = ImagemModel()
+        model.id = imagem.id
+        model.caminho = imagem.caminho
+        return model
+    }
 }

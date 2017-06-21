@@ -9,6 +9,7 @@
 import UIKit
 import LSDialogViewController
 
+/*
 class MensagemDiariaModel {
     
     var aluno: AlunoModel
@@ -19,6 +20,7 @@ class MensagemDiariaModel {
         self.mensagens = mensagens
     }
 }
+ */
 
 class MensagemDiariaViewController: DrawerViewController {
 
@@ -26,14 +28,15 @@ class MensagemDiariaViewController: DrawerViewController {
     
     var rows = [MensagemDiariaModel]()
     
+    private var today = Date()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
-        self.title = TextUtils.localized(forKey: "Label.Diaria")
+        self.title = DateUtils.format(today, type: .dateBr)
         carregar()
-        popular()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,13 +49,17 @@ class MensagemDiariaViewController: DrawerViewController {
         super.didReceiveMemoryWarning()
     }
     
+    @IBAction func onRefreshTapped(_ sender: UIBarButtonItem) {
+        self.carregar()
+    }
+    
     private func carregar() {
         showActivityIndicator()
-        let observable = MensagemService.Async.buscar()
+        let observable = MensagemService.Async.buscar(date: today, sync: true)
         prepare(for: observable)
             .subscribe(
                 onNext: { values in
-                    
+                    self.carregar(values)
                 },
                 onError: { error in
                     self.hideActivityIndicator()
@@ -65,38 +72,9 @@ class MensagemDiariaViewController: DrawerViewController {
 
     }
     
-    private func popular() {
-        for i in 1...5 {
-            let aluno = AlunoModel()
-            if i % 2 == 0 {
-                aluno.foto = UIImageJPEGRepresentation(UIImage(named: "aluno1.jpg")!, 1)
-            } else {
-                aluno.foto = UIImageJPEGRepresentation(UIImage(named: "aluno2.jpg")!, 1)
-            }
-            aluno.nome = "Nome do aluno \(i)"
-            aluno.nomeMae = "Mãe do aluno \(i)"
-            aluno.dataNascimento = Date()
-            var mensagens = [MensagemModel]()
-            for j in i...5 {
-                let mensagem = MensagemModel()
-                mensagem.data = Date()
-                mensagem.escola = EscolaModel()
-                mensagem.escola.nome = "Escola \(j)"
-                if j % 2 == 0 {
-                    mensagem.assunto = .prova
-                    mensagem.conteudo = TextUtils.localized(forKey: "Fake.Conteudo.Mensagem.1")
-                    mensagem.escola.logo = UIImageJPEGRepresentation(UIImage(named: "escola1.jpg")!, 1)
-                } else {
-                    mensagem.assunto = .informacao
-                    mensagem.conteudo = TextUtils.localized(forKey: "Fake.Conteudo.Mensagem.2")
-                    mensagem.escola.logo = UIImageJPEGRepresentation(UIImage(named: "escola2.jpg")!, 1)
-                }
-                mensagens.append(mensagem)
-            }
-            aluno.mensagens = mensagens
-            let row = MensagemDiariaModel(aluno: aluno, mensagens: mensagens)
-            rows.append(row)
-        }
+    private func carregar(_ rows: [MensagemDiariaModel]) {
+        self.rows = rows
+        self.tableView.reloadData()
     }
 }
 
@@ -107,14 +85,15 @@ extension MensagemDiariaViewController: UISearchDisplayDelegate {
 extension MensagemDiariaViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let aluno = rows[section].aluno
-        let header = Header.create(aluno, owner: tableView)
+        let key = rows[section].key
+        let count = rows[section].count
+        let header = Header.create(key, count: count, owner: tableView)
         return header
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         var height = UITableViewAutomaticDimension
-        let mensagens = rows[indexPath.section].mensagens!
+        let mensagens = rows[indexPath.section].mensagens
         if mensagens.count == indexPath.row {
             if indexPath.section < (rows.count - 1) {
                 height = SeparatorTableViewCell.height
@@ -142,7 +121,10 @@ extension MensagemDiariaViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let controller = ModalViewController(nibName: "ModalViewController", bundle: nil)
+        let model = rows[indexPath.section]
+        let key = model.key
+        let mensagem = model.mensagens[indexPath.row]
+        let controller = ModalViewController.create(key: key, mensagem: mensagem, owner: self)
         self.presentDialogViewController(controller, animationPattern: .zoomInOut, backgroundViewType: .gradient, dismissButtonEnabled: true)
     }
 }
@@ -154,21 +136,17 @@ extension MensagemDiariaViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var numberOfRows = 0
-        if let mensagens = rows[section].mensagens {
-            numberOfRows = mensagens.count + 1
-        }
-        return numberOfRows
+        return rows[section].mensagens.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let row = indexPath.row
         var cell: UITableViewCell
-        if row == rows[indexPath.section].mensagens!.count {
+        if row == rows[indexPath.section].mensagens.count {
             cell = tableView.dequeueReusableCell(withIdentifier: SeparatorTableViewCell.reusableCellIdentifier, for: indexPath) as! SeparatorTableViewCell
         } else {
             let mensagemCell = tableView.dequeueReusableCell(withIdentifier: MensagemDiariaTableViewCell.reusableCellIdentifier, for: indexPath) as! MensagemDiariaTableViewCell
-            let mensagem = rows[indexPath.section].mensagens![row]
+            let mensagem = rows[indexPath.section].mensagens[row]
             mensagemCell.popular(mensagem, cellForRowAt: indexPath)
             cell = mensagemCell
         }

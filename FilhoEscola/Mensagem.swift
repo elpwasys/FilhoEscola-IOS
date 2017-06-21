@@ -21,6 +21,8 @@ class Mensagem: Object {
     dynamic var escola: Escola?
     dynamic var funcionario: Funcionario?
     
+    let alunos = LinkingObjects(fromType: Aluno.self, property: "mensagens")
+
     override static func primaryKey() -> String? {
         return "id"
     }

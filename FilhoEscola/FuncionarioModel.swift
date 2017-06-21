@@ -33,4 +33,13 @@ class FuncionarioModel: Model {
         nome <- map["nome"]
         email <- map["email"]
     }
+    
+    static func from(_ funcionario: Funcionario) -> FuncionarioModel {
+        let model = FuncionarioModel()
+        model.id = funcionario.id
+        model.nome = funcionario.nome
+        model.email = funcionario.email
+        model.tipo = Tipo.init(rawValue: funcionario.tipo)
+        return model
+    }
 }

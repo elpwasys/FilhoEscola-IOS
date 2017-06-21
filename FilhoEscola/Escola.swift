@@ -14,6 +14,8 @@ class Escola: Object {
     dynamic var id = 0
     dynamic var nome = ""
     
+    dynamic var imagem: Imagem?
+    
     let alunos = List<Aluno>()
     let mensagens = List<Mensagem>()
     let funcionarios = List<Funcionario>()
@@ -29,6 +31,9 @@ class Escola: Object {
         let escola = Escola()
         escola.id = id
         escola.nome = model.nome
+        if let imagem = model.imagem {
+            escola.imagem = Imagem.from(imagem)
+        }
         return escola
     }
 }

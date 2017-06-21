@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MensagemDiariaTableViewCell: UITableViewCell {
 
@@ -35,8 +36,10 @@ class MensagemDiariaTableViewCell: UITableViewCell {
         ViewUtils.text(mensagem.conteudo, for: conteudoLabel)
         ViewUtils.text(mensagem.assunto.label, for: assuntoLabel)
         assuntoImageView.image = mensagem.assunto.image
-        if let data = mensagem.escola.logo {
-            escolaImageView.image = UIImage(data: data)
+        if let imagem = mensagem.escola.imagem {
+            if let url = URL(string: "\(Config.fileURL)/\(imagem.caminho!)") {
+                escolaImageView.kf.setImage(with: url)
+            }
         }
     }
 }

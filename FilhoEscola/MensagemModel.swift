@@ -21,19 +21,6 @@ class MensagemModel: Model {
     var escola: EscolaModel!
     var funcionario: FuncionarioModel!
     
-    override func mapping(map: Map) {
-        super.mapping(map: map)
-        let dateTransform = DateTransformType()
-        data <- (map["data"], dateTransform)
-        conteudo <- map["conteudo"]
-        botaoLink <- map["botaoLink"]
-        botaoTexto <- map["botaoTexto"]
-        assunto <- map["assunto"]
-        aluno <- map["aluno"]
-        escola <- map["escola"]
-        funcionario <- map["funcionario"]
-    }
-    
     enum Assunto: String {
         case prova = "PROVA"
         case mensagem = "MENSAGEM"
@@ -48,5 +35,29 @@ class MensagemModel: Model {
         var image: UIImage? {
             return UIImage(named: key)
         }
+    }
+    
+    override func mapping(map: Map) {
+        super.mapping(map: map)
+        let dateTransform = DateTransformType()
+        data <- (map["data"], dateTransform)
+        conteudo <- map["conteudo"]
+        botaoLink <- map["botaoLink"]
+        botaoTexto <- map["botaoTexto"]
+        assunto <- map["assunto"]
+        aluno <- map["aluno"]
+        escola <- map["escola"]
+        funcionario <- map["funcionario"]
+    }
+    
+    static func from(_ mensagem: Mensagem) -> MensagemModel {
+        let model = MensagemModel()
+        model.id = mensagem.id
+        model.data = mensagem.data as Date
+        model.conteudo = mensagem.conteudo
+        model.botaoLink = mensagem.botaoLink
+        model.botaoTexto = mensagem.botaoTexto
+        model.assunto = Assunto.init(rawValue: mensagem.assunto)
+        return model
     }
 }

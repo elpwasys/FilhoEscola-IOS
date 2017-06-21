@@ -38,6 +38,14 @@ public class TextUtils {
         return text
     }
     
+    // Remove caracteres especiais
+    // Converte para minusculo
+    // Remove caracteres nao alphanumerico
+    public static func folding(_ text: String) -> String {
+        return text.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: .current).components(separatedBy: CharacterSet.alphanumerics.inverted).joined()
+        
+    }
+    
     static func localized(forKey: String) -> String {
         return Bundle.main.localizedString(forKey: forKey, value: nil, table: nil)
     }
