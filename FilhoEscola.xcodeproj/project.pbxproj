@@ -84,6 +84,9 @@
 		EEE4AF3B1EAD988100AA2539 /* DispositivoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE4AF381EAD988100AA2539 /* DispositivoService.swift */; };
 		EEED67231EBE63AF001AAE5E /* MensagemMensalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEED67211EBE63AF001AAE5E /* MensagemMensalTableViewCell.swift */; };
 		EEED67241EBE63AF001AAE5E /* MensagemMensalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEED67221EBE63AF001AAE5E /* MensagemMensalTableViewCell.xib */; };
+		EEFF44D31F30E4640089941E /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFF44D21F30E4640089941E /* Network.swift */; };
+		EEFF44D51F30E7E80089941E /* UploadResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFF44D41F30E7E80089941E /* UploadResultModel.swift */; };
+		EEFF44D71F30F3770089941E /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFF44D61F30F3770089941E /* MessageModel.swift */; };
 		F73F39D61B63F1E63FD99CD0 /* Pods_FilhoEscola.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69F7B5F5ADFA81D58520BBBF /* Pods_FilhoEscola.framework */; };
 /* End PBXBuildFile section */
 
@@ -172,6 +175,9 @@
 		EEE4AF381EAD988100AA2539 /* DispositivoService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispositivoService.swift; sourceTree = "<group>"; };
 		EEED67211EBE63AF001AAE5E /* MensagemMensalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MensagemMensalTableViewCell.swift; sourceTree = "<group>"; };
 		EEED67221EBE63AF001AAE5E /* MensagemMensalTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MensagemMensalTableViewCell.xib; sourceTree = "<group>"; };
+		EEFF44D21F30E4640089941E /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		EEFF44D41F30E7E80089941E /* UploadResultModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadResultModel.swift; sourceTree = "<group>"; };
+		EEFF44D61F30F3770089941E /* MessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -269,6 +275,7 @@
 				EEE4AEEC1EAD8D9400AA2539 /* AppViewController.swift */,
 				EEE4AEED1EAD8D9400AA2539 /* Model.swift */,
 				EEE4AEEE1EAD8D9400AA2539 /* Trouble.swift */,
+				EEFF44D21F30E4640089941E /* Network.swift */,
 				EEE4AED21EAD8D7100AA2539 /* Http */,
 				EEE4AED11EAD8D6500AA2539 /* Utils */,
 				EEE4AED01EAD8D5300AA2539 /* Widget */,
@@ -379,6 +386,8 @@
 				EEE4AF0A1EAD8F6800AA2539 /* ResultModel.swift */,
 				EEE4AF0B1EAD8F6800AA2539 /* ViewModel.swift */,
 				EEE4AF0C1EAD8F6800AA2539 /* ToolbarModel.swift */,
+				EEFF44D61F30F3770089941E /* MessageModel.swift */,
+				EEFF44D41F30E7E80089941E /* UploadResultModel.swift */,
 				EEE4AF0D1EAD8F6800AA2539 /* ButtonModel.swift */,
 				EED8EA681EBA8030006F9AC1 /* AlunoModel.swift */,
 				EED8EA6C1EBA8207006F9AC1 /* EscolaModel.swift */,
@@ -543,6 +552,7 @@
 				EEE20F071ECE081200D64B5D /* MensagemCellModel.swift in Sources */,
 				EEE4AEE41EAD8D8700AA2539 /* PickerField.swift in Sources */,
 				EEE4AEDC1EAD8D8000AA2539 /* ViewUtils.swift in Sources */,
+				EEFF44D51F30E7E80089941E /* UploadResultModel.swift in Sources */,
 				EEE4AEE51EAD8D8700AA2539 /* TextField.swift in Sources */,
 				EE2B884B1EB8FCB800782CCD /* MensagemMensalViewController.swift in Sources */,
 				EEE4AEDA1EAD8D8000AA2539 /* NumberUtils.swift in Sources */,
@@ -558,6 +568,8 @@
 				EEE20F011ECDD06E00D64B5D /* Imagem.swift in Sources */,
 				EE3024181ECC96C800B7F010 /* Mensagem.swift in Sources */,
 				EE3D4BE21EBE5E3800243C38 /* SeparatorTableViewCell.swift in Sources */,
+				EEFF44D71F30F3770089941E /* MessageModel.swift in Sources */,
+				EEFF44D31F30E4640089941E /* Network.swift in Sources */,
 				EEE4AF071EAD8EED00AA2539 /* Cache.swift in Sources */,
 				EED8EA691EBA8030006F9AC1 /* AlunoModel.swift in Sources */,
 				EEE4AEFF1EAD8E2F00AA2539 /* SWRevealViewController.m in Sources */,

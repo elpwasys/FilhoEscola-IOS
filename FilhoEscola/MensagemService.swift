@@ -16,7 +16,7 @@ class MensagemService: Service {
     
     static func sincronizar() throws {
         let url = "\(Config.restURL)/mensagem/buscar"
-        let response: DataResponse<[MensagemModel]> = Alamofire.request(url, method: .post, encoding: JSONEncoding.default, headers: Device.headers).parse()
+        let response: DataResponse<[MensagemModel]> = try Network.request(url, method: .post, encoding: JSONEncoding.default, headers: Device.headers).parse()
         let result = response.result
         if result.isFailure {
             throw result.error!

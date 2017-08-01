@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import TOCropViewController
+import Kingfisher
 
 class MenuTableViewController: UITableViewController {
 
@@ -23,7 +23,13 @@ class MenuTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         if let dispositivo = Dispositivo.current {
-            ViewUtils.text(dispositivo.nome, for: nomeLabel)
+            self.update(dispositivo)
+        }
+        let center = NotificationCenter.default
+        center.addObserver(forName: Dispositivo.updateNotificationName, object: nil, queue: nil) { notification in
+            if let dispositivo = notification.object as? Dispositivo {
+                self.update(dispositivo)
+            }
         }
     }
 
@@ -37,7 +43,7 @@ class MenuTableViewController: UITableViewController {
         if indexPath.row == 0 {
             link = "aluno/configuracao.xhtml"
         } else if indexPath.row == 1 {
-            //link = "club/assinatura.xhtml"
+            link = "meu-cadastro.xhtml"
         } else if indexPath.row == 2 {
             link = "aluno/configuracao.xhtml"
         } else if indexPath.row == 3 {
@@ -67,26 +73,13 @@ class MenuTableViewController: UITableViewController {
             present(controller, animated: true, completion: nil)
         }
     }
-}
-
-extension MenuTableViewController: UINavigationControllerDelegate {
     
-}
-
-extension MenuTableViewController: UIImagePickerControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        imagePicker.dismiss(animated: true, completion: nil)
-        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            let controller = TOCropViewController(image: image)
-            controller.delegate = self
-            //controller.aspectRatioPickerButtonHidden = true
-            present(controller, animated: true, completion: nil)
+    private func update(_ dispositivo: Dispositivo) {
+        ViewUtils.text(dispositivo.nome, for: nomeLabel)
+        if dispositivo.imagemURI != nil {
+            if let url = URL(string: "\(Config.fileURL)/\(dispositivo.imagemURI!)") {
+                imageView.kf.setImage(with: url)
+            }
         }
-    }
-}
-
-extension MenuTableViewController: TOCropViewControllerDelegate {
-    func cropViewController(_ cropViewController: TOCropViewController, didCropToCircleImage image: UIImage, rect cropRect: CGRect, angle: Int) {
-        
     }
 }

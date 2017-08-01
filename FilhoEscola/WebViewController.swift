@@ -8,11 +8,16 @@
 
 import UIKit
 
+import SwiftMessages
+import TOCropViewController
+
 fileprivate enum Scheme: String {
+    case dataUpdate = "data.update"
     case initialize = "initialize"
     case imageOpen = "image.open"
     case imageUpload = "image.upload"
     case toastShow = "toast.show"
+    case message = "message"
     case progressShow = "progress.show"
     case progressHide = "progress.hide"
 }
@@ -20,6 +25,8 @@ fileprivate enum Scheme: String {
 class WebViewController: DrawerViewController {
 
     @IBOutlet weak var webView: UIWebView!
+    
+    fileprivate var imagePicker: UIImagePickerController!
     
     var link: String?
     
@@ -58,6 +65,29 @@ extension WebViewController {
                 self.addBarButtonItem(buttons, position: .right)
             }
         }
+    }
+    
+    fileprivate func initialize(_ model: MessageModel) {
+        let message = App.Message()
+        message.presentationStyle = .bottom
+        message.presentationContext = .window(windowLevel: UIWindowLevelStatusBar)
+        message.duration = .forever
+        message.dimMode = .gray(interactive: true)
+        message.title = model.title
+        message.content = model.content
+        if let type = model.type {
+            switch type {
+            case .error:
+                message.theme = .error
+            case .success:
+                message.theme = .success
+            case .warning:
+                message.theme = .warning
+            default:
+                break
+            }
+        }
+        message.show(self)
     }
     
     fileprivate func addBarButtonItem(_ models: [ButtonModel], position: ButtonModel.Position) {
@@ -106,6 +136,77 @@ extension WebViewController {
     func onTappedBarButtonItem(button: UIButton) {
         webView.stringByEvaluatingJavaScript(from: "Device.onTapped(\(button.tag))")
     }
+    
+    fileprivate func selectSourceType() {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(
+                title: nil,
+                message: nil,
+                preferredStyle: .actionSheet
+            )
+            let camera = UIAlertAction(
+                title: TextUtils.localized(forKey: "Label.Camera"),
+                style: UIAlertActionStyle.default,
+                handler: { action in
+                    self.openSourceType(.camera)
+            }
+            )
+            camera.setValue(UIImage(named: "Camera_36"), forKey: "image")
+            
+            let biblioteca = UIAlertAction(
+                title: TextUtils.localized(forKey: "Label.Galeria"),
+                style: UIAlertActionStyle.default,
+                handler: { action in
+                    self.openSourceType(.photoLibrary)
+            }
+            )
+            biblioteca.setValue(UIImage(named: "Library_36"), forKey: "image")
+            
+            alert.addAction(biblioteca)
+            alert.addAction(camera)
+            alert.addAction(
+                UIAlertAction(
+                    title: TextUtils.localized(forKey: "Label.Cancelar"),
+                    style: UIAlertActionStyle.cancel,
+                    handler: { action in
+                        
+                })
+            )
+            
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    private func openSourceType(_ sourceType: UIImagePickerControllerSourceType) {
+        imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = sourceType
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    fileprivate func upload(_ image: UIImage) {
+        showActivityIndicator()
+        let observable = FileService.Async.upload(image: image)
+        prepare(for: observable)
+            .subscribe(
+                onNext: { model in
+                    self.onUploadComplete(model: model)
+                },
+                onError: { error in
+                    self.hideActivityIndicator()
+                    self.handle(error)
+                },
+                onCompleted: {
+                    self.hideActivityIndicator()
+                }
+            ).addDisposableTo(disposableBag)
+    }
+    
+    fileprivate func onUploadComplete(model: UploadResultModel) {
+        if let json = model.toJSONString() {
+            webView.stringByEvaluatingJavaScript(from: "Device.onUpload(\(json))")
+        }
+    }
 }
 
 extension WebViewController: UIWebViewDelegate {
@@ -116,16 +217,29 @@ extension WebViewController: UIWebViewDelegate {
         }
         if let scheme = url.scheme {
             switch scheme {
+            case Scheme.message.rawValue:
+                if let json = self.getArgs(scheme) {
+                    if let model = MessageModel(JSONString: json) {
+                        self.initialize(model)
+                    }
+                }
+                return false
             case Scheme.toastShow.rawValue:
                 if let message = self.getArgs(scheme) {
-                    self.showMessage(message)
+                    self.handle(Trouble.any(message))
+                }
+                return false
+            case Scheme.dataUpdate.rawValue:
+                if let json = self.getArgs(scheme) {
+                    if let model = Dispositivo(JSONString: json) {
+                        Dispositivo.current = model
+                    }
                 }
                 return false
             case Scheme.imageOpen.rawValue:
-                
                 return false
             case Scheme.imageUpload.rawValue:
-                
+                self.selectSourceType()
                 return false
             case Scheme.initialize.rawValue:
                 if let json = self.getArgs(scheme) {
@@ -170,5 +284,28 @@ extension WebViewController: UIWebViewDelegate {
     
     private func getArgs(_ scheme: String) -> String? {
         return webView.stringByEvaluatingJavaScript(from: "Device.getArgs('\(scheme)')")
+    }
+}
+
+extension WebViewController: UINavigationControllerDelegate {
+    
+}
+
+extension WebViewController: UIImagePickerControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        imagePicker.dismiss(animated: true, completion: nil)
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            let controller = TOCropViewController(croppingStyle: .circular, image: image)
+            controller.delegate = self
+            present(controller, animated: true, completion: nil)
+        }
+    }
+}
+
+extension WebViewController: TOCropViewControllerDelegate {
+    func cropViewController(_ cropViewController: TOCropViewController, didCropToImage image: UIImage, rect cropRect: CGRect, angle: Int) {
+        cropViewController.dismiss(animated: true, completion: nil)
+        self.upload(image)
     }
 }

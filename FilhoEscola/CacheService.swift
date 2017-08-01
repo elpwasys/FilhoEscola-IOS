@@ -42,7 +42,7 @@ class CacheService: Service {
         if let cacheModel = try find(by: url) {
             return cacheModel
         } else {
-            let dataResponse: DataResponse<Data> = Alamofire.request(url).responseData()
+            let dataResponse: DataResponse<Data> = try Network.request(url).responseData()
             let result = dataResponse.result
             if result.isFailure {
                 throw result.error!

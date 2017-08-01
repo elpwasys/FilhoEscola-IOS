@@ -15,7 +15,7 @@ class DispositivoService: Service {
     
     static func verificar(prefixo: String, numero: String, codigo: String) throws -> Dispositivo {
         let url = "\(Config.restURL)/dispositivo/verificar/\(prefixo)/\(numero)/\(codigo)"
-        let response: DataResponse<Dispositivo> = Alamofire.request(url, method: .get, encoding: JSONEncoding.default, headers: Device.headers).parse()
+        let response: DataResponse<Dispositivo> = try Network.request(url, method: .get, encoding: JSONEncoding.default, headers: Device.headers).parse()
         let result = response.result
         if result.isFailure {
             throw result.error!
@@ -27,7 +27,7 @@ class DispositivoService: Service {
     
     static func reenviar(prefixo: String, numero: String) throws -> Dispositivo {
         let url = "\(Config.restURL)/dispositivo/reenviar/\(prefixo)/\(numero)"
-        let response: DataResponse<Dispositivo> = Alamofire.request(url, method: .get, encoding: JSONEncoding.default, headers: Device.headers).parse()
+        let response: DataResponse<Dispositivo> = try Network.request(url, method: .get, encoding: JSONEncoding.default, headers: Device.headers).parse()
         let result = response.result
         if result.isFailure {
             throw result.error!
@@ -40,7 +40,7 @@ class DispositivoService: Service {
     static func confirmar(model: Dispositivo) throws -> Dispositivo {
         let url = "\(Config.restURL)/dispositivo/confirmar"
         let dictionary = model.dictonary()
-        let response: DataResponse<Dispositivo> = Alamofire.request(url, method: .post, parameters: dictionary, encoding: JSONEncoding.default, headers: Device.headers).parse()
+        let response: DataResponse<Dispositivo> = try Network.request(url, method: .post, parameters: dictionary, encoding: JSONEncoding.default, headers: Device.headers).parse()
         let result = response.result
         if result.isFailure {
             throw result.error!

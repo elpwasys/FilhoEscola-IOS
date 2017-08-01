@@ -41,7 +41,7 @@ class FileService: Service {
         }
         let manager = FileManager.default
         if !manager.fileExists(atPath: url.path) {
-            let response: DataResponse<Data> = Alamofire.request("\(baseURL)/\(resource)").responseData()
+            let response: DataResponse<Data> = try Network.request("\(baseURL)/\(resource)").responseData()
             let result = response.result
             if result.isFailure {
                 throw result.error!
@@ -71,6 +71,60 @@ class FileService: Service {
         return url
     }
     
+    static func upload(image: UIImage, handler: @escaping (UploadResultModel?, Error?) -> Void) {
+        if let data = UIImageJPEGRepresentation(image, 0.8) {
+            let manager = FileManager.default
+            let directory = createURL(in: .cache, for: "upload")
+            do {
+                try manager.createDirectory(at: directory, withIntermediateDirectories: true, attributes: nil)
+                // CRIA O NOME DA IMAGEM
+                let date = Date()
+                let formatter = DateFormatter()
+                formatter.dateFormat = "yyyyMMdd_HHmmss'.jpeg'"
+                let name = formatter.string(from: date)
+                let url = directory.appendingPathComponent(name)
+                manager.createFile(atPath: url.path, contents: data, attributes: nil)
+                // Exclui o arquivo
+                let remove = {
+                    do {
+                        try manager.removeItem(at: url)
+                    } catch {
+                        // Non-fatal: Arquivo provavelmente nao existe
+                    }
+                }
+                try Network.upload(
+                    multipartFormData: { multipart in
+                        multipart.append(url, withName: "file")
+                },
+                    to: "\(Config.restURL)/file/upload",
+                    method: .post,
+                    headers: Device.headers,
+                    encodingCompletion: { encondingResult in
+                        switch encondingResult {
+                        case .success(let request, _, _):
+                            request.parse(handler: {(response: DataResponse<UploadResultModel>) in
+                                remove()
+                                let result = response.result
+                                if result.isSuccess {
+                                    handler(result.value!, nil)
+                                } else {
+                                    handler(nil, result.error!)
+                                }
+                            })
+                        case .failure(let error):
+                            remove()
+                            handler(nil, error)
+                        }
+                }
+                )
+            } catch {
+                handler(nil, error)
+            }
+        } else {
+            handler(nil, Trouble.any("Falha ao comprimir imagem"))
+        }
+    }
+    
     class Async {
         static func load(resource: String) -> Observable<URL> {
             return load(resources: [resource])
@@ -86,6 +140,19 @@ class FileService: Service {
                 } catch {
                     observer.onError(error)
                 }
+                return Disposables.create()
+            }
+        }
+        static func upload(image: UIImage) -> Observable<UploadResultModel> {
+            return Observable.create { observer in
+                FileService.upload(image: image, handler: { (model, error) in
+                    if model != nil {
+                        observer.onNext(model!)
+                        observer.onCompleted()
+                    } else {
+                        observer.onError(error!)
+                    }
+                })
                 return Disposables.create()
             }
         }

@@ -7,50 +7,91 @@
 
 import Foundation
 
-import Alamofire
-import ObjectMapper
+import SwiftMessages
+import SystemConfiguration
 
 class App {
     static let locale = Locale(identifier: "pt_BR")
-}
-
-// MARK: ObjectMapper
-class DateTransformType: TransformType {
-    typealias JSON = String
-    typealias Object = Date
-    var dateType: DateType
-    init(type: DateType? = .dateBr) {
-        self.dateType = type!
-    }
-    func transformToJSON(_ value: Date?) -> String? {
-        guard let value = value else {
-            return nil
+    class Message {
+        var theme = Theme.info
+        var layout: MessageView.Layout?
+        var title: String?
+        var content: String!
+        var dimMode: SwiftMessages.DimMode?
+        var duration: SwiftMessages.Duration?
+        var presentationStyle: SwiftMessages.PresentationStyle?
+        var presentationContext: SwiftMessages.PresentationContext?
+        func show(_ sender: Any) {
+            let view: MessageView
+            if let layout = self.layout {
+                switch layout {
+                case .TabView:
+                    view = MessageView.viewFromNib(layout: .TabView)
+                case .CardView:
+                    view = MessageView.viewFromNib(layout: .CardView)
+                case .StatusLine:
+                    view = MessageView.viewFromNib(layout: .StatusLine)
+                default:
+                    view = try! SwiftMessages.viewFromNib()
+                }
+            } else {
+                view = try! SwiftMessages.viewFromNib()
+            }
+            view.configureContent(
+                title: title,
+                body: content,
+                iconImage: nil,
+                iconText: nil,
+                buttonImage: nil,
+                buttonTitle: nil,
+                buttonTapHandler: { _ in
+                    SwiftMessages.hide()
+            }
+            )
+            switch theme {
+            case .info:
+                view.configureTheme(.info)
+            case .error:
+                view.configureTheme(.error)
+            case .success:
+                view.configureTheme(.success)
+            case .warning:
+                view.configureTheme(.warning)
+                /*default:
+                 view.configureTheme(backgroundColor: UIColor.black, foregroundColor: UIColor.white)
+                 */
+            }
+            view.configureDropShadow()
+            view.button?.isHidden = true
+            view.iconLabel?.isHidden = true
+            view.iconImageView?.isHidden = true
+            view.bodyLabel?.textAlignment = .center
+            if self.title == nil {
+                view.titleLabel?.isHidden = true
+            }
+            var config = SwiftMessages.defaultConfig
+            if let dimMode = self.dimMode {
+                config.dimMode = dimMode
+            }
+            if let duration = self.duration {
+                config.duration = duration
+            }
+            if let presentationStyle = self.presentationStyle {
+                config.presentationStyle = presentationStyle
+            }
+            if let presentationContext = self.presentationContext {
+                config.presentationContext = presentationContext
+            }
+            if case .top = config.presentationStyle {
+                switch theme {
+                case .error, .success, .warning:
+                    config.preferredStatusBarStyle = .lightContent
+                default:
+                    break
+                }
+            }
+            SwiftMessages.show(config: config, view: view)
         }
-        return DateUtils.format(value, pattern: dateType.pattern)
-    }
-    func transformFromJSON(_ value: Any?) -> Date? {
-        guard let value = value as? String else {
-            return nil
-        }
-        return DateUtils.parse(value)
-    }
-}
-
-class IdentifierTransformType: TransformType {
-    typealias JSON = Int
-    typealias Object = Int
-    init() {}
-    func transformToJSON(_ value: Int?) -> Int? {
-        return value
-    }
-    func transformFromJSON(_ value: Any?) -> Int? {
-        if let value = value as? Int {
-            return value
-        }
-        if let text = value as? String, let id = Int(text) {
-            return id
-        }
-        return nil
     }
 }
 
@@ -108,134 +149,22 @@ class Device {
         }
         return version
     }
-}
-
-// MARK: Alamofire
-extension DataRequest {
     
-    open static func validate(default: DefaultDataResponse) throws {
-        let data = `default`.data
-        let error = `default`.error
-        let request = `default`.request
-        let response = `default`.response
-        try validate(request: request, response: response, data: data, error: error)
-    }
-    
-    open static func validate(request: URLRequest?, response: HTTPURLResponse?, data: Data?, error: Error?) throws {
-        if let error = error {
-            throw error
-        }
-        guard let data = data else {
-            throw Trouble.any("Data could not be serialized. Input data is nil.")
-        }
-        guard let response = response else {
-            throw Trouble.any("Data could not be serialized. Input response is nil.")
-        }
-        guard let httpStatus = HttpStatus(rawValue: response.statusCode) else {
-            throw Trouble.any("Data could not be serialized. HttpStatus not defined.")
-        }
-        guard httpStatus.is2xxSuccessful() else {
-            do {
-                let json = try JSONSerialization.jsonObject(with: data) as? [String:Any]
-                let messages = json?["messages"] as? [String]
-                throw Trouble.server(httpStatus, messages)
-            } catch {
-                throw error
+    static var isNetworkAvailable: Bool {
+        var zeroAddress = sockaddr_in()
+        zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
+        zeroAddress.sin_family = sa_family_t(AF_INET)
+        let defaultRouteReachability = withUnsafePointer(to: &zeroAddress) {
+            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {zeroSockAddress in
+                SCNetworkReachabilityCreateWithAddress(nil, zeroSockAddress)
             }
         }
-    }
-    
-    open static func serializer<T: BaseMappable>(_ path: String?) -> DataResponseSerializer<[T]> {
-        return DataResponseSerializer { request, response, data, error in
-            do {
-                try validate(request: request, response: response, data: data, error: error)
-                let serializer = DataRequest.jsonResponseSerializer(options: .allowFragments)
-                let result = serializer.serializeResponse(request, response, data, error)
-                let json: Any?
-                if let path = path, path.isEmpty == false {
-                    json = (result.value as AnyObject?)?.value(forKeyPath: path)
-                } else {
-                    json = result.value
-                }
-                if let mapper = Mapper<T>().mapArray(JSONObject: json) {
-                    return .success(mapper)
-                }
-                throw MapperError.failed
-            } catch {
-                return .failure(error)
-            }
+        var flags = SCNetworkReachabilityFlags()
+        if !SCNetworkReachabilityGetFlags(defaultRouteReachability!, &flags) {
+            return false
         }
-    }
-    
-    open static func serializer<T: BaseMappable>(_ path: String?, object: T? = nil) -> DataResponseSerializer<T> {
-        return DataResponseSerializer { request, response, data, error in
-            do {
-                try validate(request: request, response: response, data: data, error: error)
-                let serializer = DataRequest.jsonResponseSerializer(options: .allowFragments)
-                let result = serializer.serializeResponse(request, response, data, error)
-                let json: Any?
-                if let path = path, path.isEmpty == false {
-                    json = (result.value as AnyObject?)?.value(forKeyPath: path)
-                } else {
-                    json = result.value
-                }
-                if let mapper = Mapper<T>().map(JSONObject: json) {
-                    return .success(mapper)
-                }
-                throw MapperError.failed
-            } catch {
-                return .failure(error)
-            }
-        }
-    }
-    
-    @discardableResult
-    open func parse<T: BaseMappable>(path: String? = nil, handler: @escaping (DataResponse<[T]>) -> Void) -> Self {
-        let queue = DispatchQueue.global(qos: .default)
-        return response(queue: queue, responseSerializer: DataRequest.serializer(path), completionHandler: handler)
-    }
-    
-    @discardableResult
-    open func parse<T: BaseMappable>(path: String? = nil, object: T? = nil, handler: @escaping (DataResponse<T>) -> Void) -> Self {
-        let queue = DispatchQueue.global(qos: .default)
-        return response(queue: queue, responseSerializer: DataRequest.serializer(path, object: object), completionHandler: handler)
-    }
-    
-    @discardableResult
-    open func parse<T: BaseMappable>(path: String? = nil, object: T? = nil) -> DataResponse<T> {
-        let queue = DispatchQueue.global(qos: .default)
-        var result: DataResponse<T>!
-        let semaphore = DispatchSemaphore(value: 0)
-        response(queue: queue, responseSerializer: DataRequest.serializer(path, object: object), completionHandler: {(response: DataResponse<T>) in
-            result = response
-            semaphore.signal()
-        })
-        _ = semaphore.wait(timeout: .distantFuture)
-        return result
-    }
-    
-    @discardableResult
-    open func parse<T: BaseMappable>(path: String? = nil, object: T? = nil) -> DataResponse<[T]> {
-        let queue = DispatchQueue.global(qos: .default)
-        var result: DataResponse<[T]>!
-        let semaphore = DispatchSemaphore(value: 0)
-        response(queue: queue, responseSerializer: DataRequest.serializer(path), completionHandler: {(response: DataResponse<[T]>) in
-            result = response
-            semaphore.signal()
-        })
-        _ = semaphore.wait(timeout: .distantFuture)
-        return result
-    }
-    
-    open func responseData() -> DataResponse<Data> {
-        let queue = DispatchQueue.global(qos: .default)
-        var result: DataResponse<Data>!
-        let semaphore = DispatchSemaphore(value: 0)
-        response(queue: queue, responseSerializer: DataRequest.dataResponseSerializer(), completionHandler: {(response: DataResponse<Data>) in
-            result = response
-            semaphore.signal()
-        })
-        _ = semaphore.wait(timeout: .distantFuture)
-        return result
+        let isReachable = (flags.rawValue & UInt32(kSCNetworkFlagsReachable)) != 0
+        let needsConnection = (flags.rawValue & UInt32(kSCNetworkFlagsConnectionRequired)) != 0
+        return (isReachable && !needsConnection)
     }
 }

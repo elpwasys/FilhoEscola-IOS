@@ -8,6 +8,7 @@
 
 import Foundation
 import ObjectMapper
+import SystemConfiguration
 
 class Dispositivo: Mappable {
     
@@ -19,6 +20,10 @@ class Dispositivo: Mappable {
     var numero: String!
     var prefixo: String!
     var dataNascimento: Date!
+    
+    var imagemURI: String!
+    
+    static let updateNotificationName = Notification.Name(rawValue: "\(Dispositivo.self).UpdateNotificationName")
     
     static var current: Dispositivo? {
         get {
@@ -32,6 +37,9 @@ class Dispositivo: Mappable {
                 model = Dispositivo(uuid: uuid, nome: nome, numero: numero, prefixo: prefixo, dataNascimento: dataNascimento)
                 if let value = defaults.value(forKey: token) as? String {
                     model?.token = value
+                }
+                if let value = defaults.value(forKey: imagemURI) as? String {
+                    model?.imagemURI = value
                 }
                 if let rawValue = defaults.value(forKey: status) as? String, let value = Status.init(rawValue: rawValue) {
                     model?.status = value
@@ -51,6 +59,9 @@ class Dispositivo: Mappable {
                 if model.token != nil {
                     defaults.set(model.token, forKey: token)
                 }
+                if model.imagemURI != nil {
+                    defaults.set(model.imagemURI, forKey: imagemURI)
+                }
             } else {
                 defaults.removeObject(forKey: uuid)
                 defaults.removeObject(forKey: nome)
@@ -58,8 +69,10 @@ class Dispositivo: Mappable {
                 defaults.removeObject(forKey: status)
                 defaults.removeObject(forKey: numero)
                 defaults.removeObject(forKey: prefixo)
+                defaults.removeObject(forKey: imagemURI)
                 defaults.removeObject(forKey: dataNascimento)
             }
+            NotificationCenter.default.post(name: updateNotificationName, object: newValue)
         }
     }
     
@@ -74,6 +87,7 @@ class Dispositivo: Mappable {
     private static let status = "\(Dispositivo.self).status"
     private static let numero = "\(Dispositivo.self).numero"
     private static let prefixo = "\(Dispositivo.self).prefixo"
+    private static let imagemURI = "\(Dispositivo.self).imagemURI"
     private static let dataNascimento = "\(Dispositivo.self).dataNascimento"
     
     init(uuid: String, nome: String, numero: String, prefixo: String, dataNascimento: Date) {
@@ -95,6 +109,7 @@ class Dispositivo: Mappable {
         status <- map["status"]
         numero <- map["numero"]
         prefixo <- map["prefixo"]
+        imagemURI <- map["imagemURI"]
         dataNascimento <- (map["dataNascimento"], DateTransformType())
     }
     

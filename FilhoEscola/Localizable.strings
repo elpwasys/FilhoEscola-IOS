@@ -19,6 +19,9 @@
 "Label.Diaria" = "Diária";
 "Label.Mensal" = "Mensal";
 "Label.Semanal" = "Semanal";
+"Label.Galeria" = "Galeria";
+"Label.Camera" = "Câmera";
+"Label.Cancelar" = "Cancelar";
 
 
 /* Message */
@@ -31,6 +34,8 @@
 "Mensagem.Assunto.mensagem" = "Mensagem";
 "Mensagem.Assunto.atividade" = "Atividade";
 "Mensagem.Assunto.informacao" = "Informação";
+"Message.ServidorIndisponivel" = "Não foi possível conectar ao servidor.";
+"Message.InternetIndisponivel" = "Não há conexão com a internet";
 
 /* Funcionario.Tipo */
 "Funcionario.Tipo.principal" = "Administrador";
