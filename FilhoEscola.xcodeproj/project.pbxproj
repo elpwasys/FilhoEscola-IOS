@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EE2B88451EB8FC4600782CCD /* MensagemDiariaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2B88441EB8FC4600782CCD /* MensagemDiariaViewController.swift */; };
-		EE2B88491EB8FCA600782CCD /* MensagemSemanalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2B88481EB8FCA600782CCD /* MensagemSemanalViewController.swift */; };
-		EE2B884B1EB8FCB800782CCD /* MensagemMensalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2B884A1EB8FCB800782CCD /* MensagemMensalViewController.swift */; };
 		EE3024081ECC75D700B7F010 /* ImagemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3024071ECC75D700B7F010 /* ImagemModel.swift */; };
 		EE3024101ECC806E00B7F010 /* MensagemService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE30240F1ECC806E00B7F010 /* MensagemService.swift */; };
 		EE3024121ECC850000B7F010 /* Escola.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3024111ECC850000B7F010 /* Escola.swift */; };
@@ -17,15 +14,21 @@
 		EE3024181ECC96C800B7F010 /* Mensagem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3024171ECC96C800B7F010 /* Mensagem.swift */; };
 		EE30241A1ECC97CC00B7F010 /* Funcionario.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3024191ECC97CC00B7F010 /* Funcionario.swift */; };
 		EE30241C1ECC9AA200B7F010 /* FuncionarioModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE30241B1ECC9AA200B7F010 /* FuncionarioModel.swift */; };
-		EE3024201ECCF52700B7F010 /* MensagemDiariaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE30241F1ECCF52700B7F010 /* MensagemDiariaModel.swift */; };
-		EE3D4BDB1EBE4C6800243C38 /* MensagemDiariaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3D4BD91EBE4C6800243C38 /* MensagemDiariaTableViewCell.swift */; };
-		EE3D4BDC1EBE4C6800243C38 /* MensagemDiariaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE3D4BDA1EBE4C6800243C38 /* MensagemDiariaTableViewCell.xib */; };
-		EE3D4BE01EBE5D6300243C38 /* SeparatorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE3D4BDE1EBE5D6300243C38 /* SeparatorTableViewCell.xib */; };
-		EE3D4BE21EBE5E3800243C38 /* SeparatorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3D4BE11EBE5E3800243C38 /* SeparatorTableViewCell.swift */; };
-		EECD94361EBCAA9F009919CA /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECD94341EBCAA9F009919CA /* Header.swift */; };
-		EECD94371EBCAA9F009919CA /* Header.xib in Resources */ = {isa = PBXBuildFile; fileRef = EECD94351EBCAA9F009919CA /* Header.xib */; };
+		EE3D4BDB1EBE4C6800243C38 /* MensagemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3D4BD91EBE4C6800243C38 /* MensagemTableViewCell.swift */; };
+		EE3D4BDC1EBE4C6800243C38 /* MensagemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE3D4BDA1EBE4C6800243C38 /* MensagemTableViewCell.xib */; };
+		EE7B26CF1F421F4C0084D96A /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7B26CE1F421F4C0084D96A /* Icon.swift */; };
+		EE7B26D11F421F5B0084D96A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE7B26D01F421F5B0084D96A /* Assets.xcassets */; };
 		EECD943A1EBCAAC0009919CA /* CircleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECD94381EBCAAC0009919CA /* CircleLabel.swift */; };
 		EECD943B1EBCAAC0009919CA /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECD94391EBCAAC0009919CA /* CircleImage.swift */; };
+		EED196801F38F7CE00509675 /* AlunoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED1967F1F38F7CE00509675 /* AlunoListViewController.swift */; };
+		EED341021F39E1AC00A8AB0F /* AlunoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED341011F39E1AC00A8AB0F /* AlunoService.swift */; };
+		EED341051F39EF7100A8AB0F /* AlunoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED341031F39EF7100A8AB0F /* AlunoTableViewCell.swift */; };
+		EED341061F39EF7100A8AB0F /* AlunoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EED341041F39EF7100A8AB0F /* AlunoTableViewCell.xib */; };
+		EED341081F39F97100A8AB0F /* MensagemCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED341071F39F97100A8AB0F /* MensagemCalendarViewController.swift */; };
+		EED3410A1F3A02A300A8AB0F /* ShadowUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED341091F3A02A300A8AB0F /* ShadowUtils.swift */; };
+		EED3410C1F3A02DF00A8AB0F /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED3410B1F3A02DF00A8AB0F /* Color.swift */; };
+		EED3410F1F3A04C300A8AB0F /* MensagemCalendarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED3410E1F3A04C300A8AB0F /* MensagemCalendarHeaderView.swift */; };
+		EED341111F3A050100A8AB0F /* MensagemCalendarHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EED341101F3A050100A8AB0F /* MensagemCalendarHeaderView.xib */; };
 		EED3D0F21EC01F2800C220F6 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED3D0F01EC01F2800C220F6 /* ModalViewController.swift */; };
 		EED3D0F31EC01F2800C220F6 /* ModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EED3D0F11EC01F2800C220F6 /* ModalViewController.xib */; };
 		EED8EA691EBA8030006F9AC1 /* AlunoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED8EA681EBA8030006F9AC1 /* AlunoModel.swift */; };
@@ -34,9 +37,6 @@
 		EEE20F011ECDD06E00D64B5D /* Imagem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE20F001ECDD06E00D64B5D /* Imagem.swift */; };
 		EEE20F041ECDE05D00D64B5D /* ExternalWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE20F021ECDE05D00D64B5D /* ExternalWebViewController.swift */; };
 		EEE20F051ECDE05D00D64B5D /* ExternalWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEE20F031ECDE05D00D64B5D /* ExternalWebViewController.xib */; };
-		EEE20F071ECE081200D64B5D /* MensagemCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE20F061ECE081200D64B5D /* MensagemCellModel.swift */; };
-		EEE20F0A1ECE219A00D64B5D /* MensagemCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE20F081ECE219A00D64B5D /* MensagemCalendarViewController.swift */; };
-		EEE20F0B1ECE219A00D64B5D /* MensagemCalendarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEE20F091ECE219A00D64B5D /* MensagemCalendarViewController.xib */; };
 		EEE4AEC51EAD726F00AA2539 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEE4AEC41EAD726F00AA2539 /* Assets.xcassets */; };
 		EEE4AED41EAD8D7900AA2539 /* HttpStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE4AED31EAD8D7900AA2539 /* HttpStatus.swift */; };
 		EEE4AED91EAD8D8000AA2539 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE4AED51EAD8D8000AA2539 /* DateUtils.swift */; };
@@ -82,8 +82,6 @@
 		EEE4AF391EAD988100AA2539 /* FileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE4AF361EAD988100AA2539 /* FileService.swift */; };
 		EEE4AF3A1EAD988100AA2539 /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE4AF371EAD988100AA2539 /* CacheService.swift */; };
 		EEE4AF3B1EAD988100AA2539 /* DispositivoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE4AF381EAD988100AA2539 /* DispositivoService.swift */; };
-		EEED67231EBE63AF001AAE5E /* MensagemMensalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEED67211EBE63AF001AAE5E /* MensagemMensalTableViewCell.swift */; };
-		EEED67241EBE63AF001AAE5E /* MensagemMensalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEED67221EBE63AF001AAE5E /* MensagemMensalTableViewCell.xib */; };
 		EEFF44D31F30E4640089941E /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFF44D21F30E4640089941E /* Network.swift */; };
 		EEFF44D51F30E7E80089941E /* UploadResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFF44D41F30E7E80089941E /* UploadResultModel.swift */; };
 		EEFF44D71F30F3770089941E /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFF44D61F30F3770089941E /* MessageModel.swift */; };
@@ -94,9 +92,6 @@
 		69F7B5F5ADFA81D58520BBBF /* Pods_FilhoEscola.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FilhoEscola.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAC51ECEDB7B18A7644D067C /* Pods-FilhoEscola.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FilhoEscola.release.xcconfig"; path = "Pods/Target Support Files/Pods-FilhoEscola/Pods-FilhoEscola.release.xcconfig"; sourceTree = "<group>"; };
 		D3C30380CB4536B1234D79D8 /* Pods-FilhoEscola.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FilhoEscola.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FilhoEscola/Pods-FilhoEscola.debug.xcconfig"; sourceTree = "<group>"; };
-		EE2B88441EB8FC4600782CCD /* MensagemDiariaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MensagemDiariaViewController.swift; sourceTree = "<group>"; };
-		EE2B88481EB8FCA600782CCD /* MensagemSemanalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MensagemSemanalViewController.swift; sourceTree = "<group>"; };
-		EE2B884A1EB8FCB800782CCD /* MensagemMensalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MensagemMensalViewController.swift; sourceTree = "<group>"; };
 		EE3024071ECC75D700B7F010 /* ImagemModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagemModel.swift; sourceTree = "<group>"; };
 		EE30240F1ECC806E00B7F010 /* MensagemService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MensagemService.swift; sourceTree = "<group>"; };
 		EE3024111ECC850000B7F010 /* Escola.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Escola.swift; sourceTree = "<group>"; };
@@ -104,15 +99,21 @@
 		EE3024171ECC96C800B7F010 /* Mensagem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mensagem.swift; sourceTree = "<group>"; };
 		EE3024191ECC97CC00B7F010 /* Funcionario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Funcionario.swift; sourceTree = "<group>"; };
 		EE30241B1ECC9AA200B7F010 /* FuncionarioModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FuncionarioModel.swift; sourceTree = "<group>"; };
-		EE30241F1ECCF52700B7F010 /* MensagemDiariaModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MensagemDiariaModel.swift; sourceTree = "<group>"; };
-		EE3D4BD91EBE4C6800243C38 /* MensagemDiariaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MensagemDiariaTableViewCell.swift; sourceTree = "<group>"; };
-		EE3D4BDA1EBE4C6800243C38 /* MensagemDiariaTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MensagemDiariaTableViewCell.xib; sourceTree = "<group>"; };
-		EE3D4BDE1EBE5D6300243C38 /* SeparatorTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeparatorTableViewCell.xib; sourceTree = "<group>"; };
-		EE3D4BE11EBE5E3800243C38 /* SeparatorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparatorTableViewCell.swift; sourceTree = "<group>"; };
-		EECD94341EBCAA9F009919CA /* Header.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
-		EECD94351EBCAA9F009919CA /* Header.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Header.xib; sourceTree = "<group>"; };
+		EE3D4BD91EBE4C6800243C38 /* MensagemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MensagemTableViewCell.swift; sourceTree = "<group>"; };
+		EE3D4BDA1EBE4C6800243C38 /* MensagemTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MensagemTableViewCell.xib; sourceTree = "<group>"; };
+		EE7B26CE1F421F4C0084D96A /* Icon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
+		EE7B26D01F421F5B0084D96A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EECD94381EBCAAC0009919CA /* CircleLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleLabel.swift; sourceTree = "<group>"; };
 		EECD94391EBCAAC0009919CA /* CircleImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
+		EED1967F1F38F7CE00509675 /* AlunoListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlunoListViewController.swift; sourceTree = "<group>"; };
+		EED341011F39E1AC00A8AB0F /* AlunoService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlunoService.swift; sourceTree = "<group>"; };
+		EED341031F39EF7100A8AB0F /* AlunoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlunoTableViewCell.swift; sourceTree = "<group>"; };
+		EED341041F39EF7100A8AB0F /* AlunoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlunoTableViewCell.xib; sourceTree = "<group>"; };
+		EED341071F39F97100A8AB0F /* MensagemCalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MensagemCalendarViewController.swift; sourceTree = "<group>"; };
+		EED341091F3A02A300A8AB0F /* ShadowUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowUtils.swift; sourceTree = "<group>"; };
+		EED3410B1F3A02DF00A8AB0F /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		EED3410E1F3A04C300A8AB0F /* MensagemCalendarHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MensagemCalendarHeaderView.swift; sourceTree = "<group>"; };
+		EED341101F3A050100A8AB0F /* MensagemCalendarHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MensagemCalendarHeaderView.xib; sourceTree = "<group>"; };
 		EED3D0F01EC01F2800C220F6 /* ModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		EED3D0F11EC01F2800C220F6 /* ModalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ModalViewController.xib; sourceTree = "<group>"; };
 		EED8EA681EBA8030006F9AC1 /* AlunoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlunoModel.swift; sourceTree = "<group>"; };
@@ -121,9 +122,6 @@
 		EEE20F001ECDD06E00D64B5D /* Imagem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Imagem.swift; sourceTree = "<group>"; };
 		EEE20F021ECDE05D00D64B5D /* ExternalWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExternalWebViewController.swift; sourceTree = "<group>"; };
 		EEE20F031ECDE05D00D64B5D /* ExternalWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExternalWebViewController.xib; sourceTree = "<group>"; };
-		EEE20F061ECE081200D64B5D /* MensagemCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MensagemCellModel.swift; sourceTree = "<group>"; };
-		EEE20F081ECE219A00D64B5D /* MensagemCalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MensagemCalendarViewController.swift; sourceTree = "<group>"; };
-		EEE20F091ECE219A00D64B5D /* MensagemCalendarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MensagemCalendarViewController.xib; sourceTree = "<group>"; };
 		EEE4AEBA1EAD726F00AA2539 /* FilhoEscola.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FilhoEscola.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEE4AEC41EAD726F00AA2539 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EEE4AEC91EAD726F00AA2539 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -173,8 +171,6 @@
 		EEE4AF361EAD988100AA2539 /* FileService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileService.swift; sourceTree = "<group>"; };
 		EEE4AF371EAD988100AA2539 /* CacheService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
 		EEE4AF381EAD988100AA2539 /* DispositivoService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispositivoService.swift; sourceTree = "<group>"; };
-		EEED67211EBE63AF001AAE5E /* MensagemMensalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MensagemMensalTableViewCell.swift; sourceTree = "<group>"; };
-		EEED67221EBE63AF001AAE5E /* MensagemMensalTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MensagemMensalTableViewCell.xib; sourceTree = "<group>"; };
 		EEFF44D21F30E4640089941E /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		EEFF44D41F30E7E80089941E /* UploadResultModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadResultModel.swift; sourceTree = "<group>"; };
 		EEFF44D61F30F3770089941E /* MessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
@@ -212,20 +208,28 @@
 		EE2D3BAE1EBB481900B93370 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				EE3D4BD91EBE4C6800243C38 /* MensagemDiariaTableViewCell.swift */,
-				EE3D4BDA1EBE4C6800243C38 /* MensagemDiariaTableViewCell.xib */,
-				EE3D4BE11EBE5E3800243C38 /* SeparatorTableViewCell.swift */,
-				EE3D4BDE1EBE5D6300243C38 /* SeparatorTableViewCell.xib */,
-				EEED67211EBE63AF001AAE5E /* MensagemMensalTableViewCell.swift */,
-				EEED67221EBE63AF001AAE5E /* MensagemMensalTableViewCell.xib */,
+				EE3D4BD91EBE4C6800243C38 /* MensagemTableViewCell.swift */,
+				EE3D4BDA1EBE4C6800243C38 /* MensagemTableViewCell.xib */,
+				EED341031F39EF7100A8AB0F /* AlunoTableViewCell.swift */,
+				EED341041F39EF7100A8AB0F /* AlunoTableViewCell.xib */,
 			);
 			name = TableViewCell;
+			sourceTree = "<group>";
+		};
+		EED3410D1F3A047600A8AB0F /* TableViewHeaderFooterView */ = {
+			isa = PBXGroup;
+			children = (
+				EED3410E1F3A04C300A8AB0F /* MensagemCalendarHeaderView.swift */,
+				EED341101F3A050100A8AB0F /* MensagemCalendarHeaderView.xib */,
+			);
+			name = TableViewHeaderFooterView;
 			sourceTree = "<group>";
 		};
 		EED8EA631EBA7B4A006F9AC1 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				EE2D3BAE1EBB481900B93370 /* TableViewCell */,
+				EED3410D1F3A047600A8AB0F /* TableViewHeaderFooterView */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -269,7 +273,10 @@
 		EEE4AECF1EAD8D2A00AA2539 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				EE7B26D01F421F5B0084D96A /* Assets.xcassets */,
+				EE7B26CE1F421F4C0084D96A /* Icon.swift */,
 				EEE4AEE91EAD8D9400AA2539 /* App.swift */,
+				EED3410B1F3A02DF00A8AB0F /* Color.swift */,
 				EEE4AEEA1EAD8D9400AA2539 /* HRToast+UIView.swift */,
 				EEE4AEEB1EAD8D9400AA2539 /* Service.swift */,
 				EEE4AEEC1EAD8D9400AA2539 /* AppViewController.swift */,
@@ -305,6 +312,7 @@
 				EEE4AED61EAD8D8000AA2539 /* NumberUtils.swift */,
 				EEE4AED71EAD8D8000AA2539 /* TextUtils.swift */,
 				EEE4AED81EAD8D8000AA2539 /* ViewUtils.swift */,
+				EED341091F3A02A300A8AB0F /* ShadowUtils.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -331,8 +339,6 @@
 			isa = PBXGroup;
 			children = (
 				EED8EA631EBA7B4A006F9AC1 /* View */,
-				EECD94341EBCAA9F009919CA /* Header.swift */,
-				EECD94351EBCAA9F009919CA /* Header.xib */,
 				EEE4AF051EAD8EE000AA2539 /* Realm */,
 				EEE4AF041EAD8ED800AA2539 /* Model */,
 				EEE4AF021EAD8ECA00AA2539 /* Controller */,
@@ -355,15 +361,12 @@
 				EEE4AF251EAD90D200AA2539 /* InicialViewController.swift */,
 				EEE4AF261EAD90D200AA2539 /* AcessoViewController.swift */,
 				EEE4AF271EAD90D200AA2539 /* CodigoViewController.swift */,
-				EE2B88441EB8FC4600782CCD /* MensagemDiariaViewController.swift */,
-				EE2B88481EB8FCA600782CCD /* MensagemSemanalViewController.swift */,
-				EE2B884A1EB8FCB800782CCD /* MensagemMensalViewController.swift */,
 				EED3D0F01EC01F2800C220F6 /* ModalViewController.swift */,
 				EED3D0F11EC01F2800C220F6 /* ModalViewController.xib */,
 				EEE20F021ECDE05D00D64B5D /* ExternalWebViewController.swift */,
 				EEE20F031ECDE05D00D64B5D /* ExternalWebViewController.xib */,
-				EEE20F081ECE219A00D64B5D /* MensagemCalendarViewController.swift */,
-				EEE20F091ECE219A00D64B5D /* MensagemCalendarViewController.xib */,
+				EED1967F1F38F7CE00509675 /* AlunoListViewController.swift */,
+				EED341071F39F97100A8AB0F /* MensagemCalendarViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				EEE4AF371EAD988100AA2539 /* CacheService.swift */,
 				EEE4AF381EAD988100AA2539 /* DispositivoService.swift */,
 				EE30240F1ECC806E00B7F010 /* MensagemService.swift */,
+				EED341011F39E1AC00A8AB0F /* AlunoService.swift */,
 			);
 			name = Service;
 			sourceTree = "<group>";
@@ -394,8 +398,6 @@
 				EED8EA6E1EBA85D8006F9AC1 /* MensagemModel.swift */,
 				EE3024071ECC75D700B7F010 /* ImagemModel.swift */,
 				EE30241B1ECC9AA200B7F010 /* FuncionarioModel.swift */,
-				EE30241F1ECCF52700B7F010 /* MensagemDiariaModel.swift */,
-				EEE20F061ECE081200D64B5D /* MensagemCellModel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -477,19 +479,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE3D4BDC1EBE4C6800243C38 /* MensagemDiariaTableViewCell.xib in Resources */,
+				EE3D4BDC1EBE4C6800243C38 /* MensagemTableViewCell.xib in Resources */,
+				EED341111F3A050100A8AB0F /* MensagemCalendarHeaderView.xib in Resources */,
 				EEE4AEF71EAD8DB900AA2539 /* Device.js in Resources */,
 				EEE4AF331EAD910100AA2539 /* Main.storyboard in Resources */,
-				EEE20F0B1ECE219A00D64B5D /* MensagemCalendarViewController.xib in Resources */,
 				EED3D0F31EC01F2800C220F6 /* ModalViewController.xib in Resources */,
 				EEE4AEFB1EAD8DC900AA2539 /* Localizable.strings in Resources */,
+				EE7B26D11F421F5B0084D96A /* Assets.xcassets in Resources */,
 				EEE4AF341EAD910100AA2539 /* Menu.storyboard in Resources */,
-				EECD94371EBCAA9F009919CA /* Header.xib in Resources */,
-				EE3D4BE01EBE5D6300243C38 /* SeparatorTableViewCell.xib in Resources */,
 				EEE4AF351EAD910100AA2539 /* LaunchScreen.storyboard in Resources */,
 				EEE4AEC51EAD726F00AA2539 /* Assets.xcassets in Resources */,
 				EEE20F051ECDE05D00D64B5D /* ExternalWebViewController.xib in Resources */,
-				EEED67241EBE63AF001AAE5E /* MensagemMensalTableViewCell.xib in Resources */,
+				EED341061F39EF7100A8AB0F /* AlunoTableViewCell.xib in Resources */,
 				EEE4AEFA1EAD8DC900AA2539 /* config.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -549,17 +550,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EEE20F071ECE081200D64B5D /* MensagemCellModel.swift in Sources */,
 				EEE4AEE41EAD8D8700AA2539 /* PickerField.swift in Sources */,
 				EEE4AEDC1EAD8D8000AA2539 /* ViewUtils.swift in Sources */,
+				EED341081F39F97100A8AB0F /* MensagemCalendarViewController.swift in Sources */,
 				EEFF44D51F30E7E80089941E /* UploadResultModel.swift in Sources */,
 				EEE4AEE51EAD8D8700AA2539 /* TextField.swift in Sources */,
-				EE2B884B1EB8FCB800782CCD /* MensagemMensalViewController.swift in Sources */,
 				EEE4AEDA1EAD8D8000AA2539 /* NumberUtils.swift in Sources */,
 				EE3024081ECC75D700B7F010 /* ImagemModel.swift in Sources */,
 				EEE4AF291EAD90D200AA2539 /* DrawerViewController.swift in Sources */,
+				EED196801F38F7CE00509675 /* AlunoListViewController.swift in Sources */,
 				EEE4AF111EAD8F6800AA2539 /* ViewModel.swift in Sources */,
-				EE3024201ECCF52700B7F010 /* MensagemDiariaModel.swift in Sources */,
 				EEE4AEEF1EAD8D9400AA2539 /* App.swift in Sources */,
 				EEE4AEDB1EAD8D8000AA2539 /* TextUtils.swift in Sources */,
 				EEE4AF2D1EAD90D200AA2539 /* InicialViewController.swift in Sources */,
@@ -567,15 +567,15 @@
 				EEE20F041ECDE05D00D64B5D /* ExternalWebViewController.swift in Sources */,
 				EEE20F011ECDD06E00D64B5D /* Imagem.swift in Sources */,
 				EE3024181ECC96C800B7F010 /* Mensagem.swift in Sources */,
-				EE3D4BE21EBE5E3800243C38 /* SeparatorTableViewCell.swift in Sources */,
 				EEFF44D71F30F3770089941E /* MessageModel.swift in Sources */,
+				EED3410C1F3A02DF00A8AB0F /* Color.swift in Sources */,
 				EEFF44D31F30E4640089941E /* Network.swift in Sources */,
 				EEE4AF071EAD8EED00AA2539 /* Cache.swift in Sources */,
 				EED8EA691EBA8030006F9AC1 /* AlunoModel.swift in Sources */,
 				EEE4AEFF1EAD8E2F00AA2539 /* SWRevealViewController.m in Sources */,
 				EEE4AF191EAD8FC900AA2539 /* AppURLProtocol.swift in Sources */,
 				EEE4AEE31EAD8D8700AA2539 /* DateField.swift in Sources */,
-				EECD94361EBCAA9F009919CA /* Header.swift in Sources */,
+				EED3410A1F3A02A300A8AB0F /* ShadowUtils.swift in Sources */,
 				EEE4AED91EAD8D8000AA2539 /* DateUtils.swift in Sources */,
 				EEE4AF3B1EAD988100AA2539 /* DispositivoService.swift in Sources */,
 				EE30241C1ECC9AA200B7F010 /* FuncionarioModel.swift in Sources */,
@@ -587,6 +587,7 @@
 				EEE4AF2E1EAD90D200AA2539 /* AcessoViewController.swift in Sources */,
 				EEE4AEF21EAD8D9400AA2539 /* AppViewController.swift in Sources */,
 				EECD943A1EBCAAC0009919CA /* CircleLabel.swift in Sources */,
+				EED341051F39EF7100A8AB0F /* AlunoTableViewCell.swift in Sources */,
 				EEE4AF2B1EAD90D200AA2539 /* WebViewController.swift in Sources */,
 				EEE4AEE81EAD8D8700AA2539 /* CircleView.swift in Sources */,
 				EEE4AEE71EAD8D8700AA2539 /* View.swift in Sources */,
@@ -597,11 +598,11 @@
 				EEE4AF101EAD8F6800AA2539 /* ResultModel.swift in Sources */,
 				EED8EA6F1EBA85D8006F9AC1 /* MensagemModel.swift in Sources */,
 				EEE4AF181EAD8FC900AA2539 /* AppDelegate.swift in Sources */,
+				EE7B26CF1F421F4C0084D96A /* Icon.swift in Sources */,
 				EE30241A1ECC97CC00B7F010 /* Funcionario.swift in Sources */,
 				EEE4AF131EAD8F6800AA2539 /* ButtonModel.swift in Sources */,
-				EEED67231EBE63AF001AAE5E /* MensagemMensalTableViewCell.swift in Sources */,
 				EEE4AF2A1EAD90D200AA2539 /* MenuTableViewController.swift in Sources */,
-				EE2B88491EB8FCA600782CCD /* MensagemSemanalViewController.swift in Sources */,
+				EED341021F39E1AC00A8AB0F /* AlunoService.swift in Sources */,
 				EED3D0F21EC01F2800C220F6 /* ModalViewController.swift in Sources */,
 				EEE4AED41EAD8D7900AA2539 /* HttpStatus.swift in Sources */,
 				EE3024121ECC850000B7F010 /* Escola.swift in Sources */,
@@ -610,10 +611,9 @@
 				EEE4AF171EAD8FC900AA2539 /* FilhoEscola.swift in Sources */,
 				EEE4AF0E1EAD8F6800AA2539 /* CacheModel.swift in Sources */,
 				EEE4AF2F1EAD90D200AA2539 /* CodigoViewController.swift in Sources */,
-				EEE20F0A1ECE219A00D64B5D /* MensagemCalendarViewController.swift in Sources */,
-				EE2B88451EB8FC4600782CCD /* MensagemDiariaViewController.swift in Sources */,
+				EED3410F1F3A04C300A8AB0F /* MensagemCalendarHeaderView.swift in Sources */,
 				EEE4AEE61EAD8D8700AA2539 /* Button.swift in Sources */,
-				EE3D4BDB1EBE4C6800243C38 /* MensagemDiariaTableViewCell.swift in Sources */,
+				EE3D4BDB1EBE4C6800243C38 /* MensagemTableViewCell.swift in Sources */,
 				EECD943B1EBCAAC0009919CA /* CircleImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

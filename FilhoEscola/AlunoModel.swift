@@ -7,6 +7,8 @@
 //
 
 import Foundation
+
+import RealmSwift
 import ObjectMapper
 
 class AlunoKey: Hashable {
@@ -51,6 +53,24 @@ class AlunoModel: Model {
         nomeMae <- map["nomeMae"]
         dataNascimento <- (map["dataNascimento"], dateTransform)
         mensagens <- map["mensagens"]
+    }
+    
+    static func from(_ aluno: Aluno) -> AlunoModel {
+        let model = AlunoModel()
+        model.id = aluno.id
+        model.nome = aluno.nome
+        model.nomeMae = aluno.nomeMae
+        model.dataNascimento = aluno.dataNascimento as Date
+        model.mensagens = MensagemModel.from(aluno.mensagens)
+        return model
+    }
+    
+    static func from(_ results: Results<Aluno>) -> [AlunoModel] {
+        var models = [AlunoModel]()
+        for result in results {
+            models.append(from(result))
+        }
+        return models
     }
     
     class Key: Hashable {

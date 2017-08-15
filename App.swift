@@ -93,6 +93,65 @@ class App {
             SwiftMessages.show(config: config, view: view)
         }
     }
+    
+    class Loading {
+        var overlay = UIView()
+        var activityIndicator = UIActivityIndicatorView()
+        class var shared: Loading {
+            struct Static {
+                static let instance: Loading = Loading()
+            }
+            return Static.instance
+        }
+        public func show(view: UIView) {
+            if !activityIndicator.isAnimating {
+                // Overlay
+                overlay.frame = view.frame
+                overlay.center = view.center
+                overlay.alpha = 0.5
+                overlay.backgroundColor = UIColor.black
+                overlay.clipsToBounds = true
+                
+                // Indicator
+                activityIndicator.activityIndicatorViewStyle = .white
+                activityIndicator.hidesWhenStopped = true
+                activityIndicator.center = overlay.center
+                
+                overlay.addSubview(activityIndicator)
+                view.addSubview(overlay)
+                
+                activityIndicator.startAnimating()
+            }
+        }
+        
+        public func hide() {
+            activityIndicator.stopAnimating()
+            overlay.removeFromSuperview()
+        }
+    }
+}
+
+extension UIColor {
+    
+    convenience init(hex: String) {
+        
+        let scanner = Scanner(string: hex)
+        scanner.scanLocation = 0
+        
+        var rgbValue: UInt64 = 0
+        scanner.scanHexInt64(&rgbValue)
+        
+        let r = (rgbValue & 0xff0000) >> 16
+        let g = (rgbValue & 0xff00) >> 8
+        let b = rgbValue & 0xff
+        
+        self.init(
+            red: CGFloat(r) / 0xff,
+            green: CGFloat(g) / 0xff,
+            blue: CGFloat(b) / 0xff,
+            alpha: 1
+        )
+    }
 }
 
 extension String {

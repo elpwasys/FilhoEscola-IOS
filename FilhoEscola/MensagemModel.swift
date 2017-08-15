@@ -7,6 +7,8 @@
 //
 
 import Foundation
+
+import RealmSwift
 import ObjectMapper
 
 class MensagemModel: Model {
@@ -58,6 +60,15 @@ class MensagemModel: Model {
         model.botaoLink = mensagem.botaoLink
         model.botaoTexto = mensagem.botaoTexto
         model.assunto = Assunto.init(rawValue: mensagem.assunto)
+        model.escola = EscolaModel.from(mensagem.escola!)
         return model
+    }
+    
+    static func from(_ mensagens: List<Mensagem>) -> [MensagemModel] {
+        var models = [MensagemModel]()
+        for mensagem in mensagens {
+            models.append(from(mensagem))
+        }
+        return models
     }
 }

@@ -20,11 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.sharedManager().enable = true
         URLProtocol.registerClass(AppURLProtocol.self)
         
-        let color = #colorLiteral(red: 0.9982196689, green: 0.3983421922, blue: 0, alpha: 1)
+        let color = Color.primary
         UITextField.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().barTintColor = color
         UINavigationBar.appearance().tintColor = UIColor.white
-        UINavigationBar.appearance().isTranslucent = true
+        UINavigationBar.appearance().isTranslucent = false
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         return true
     }

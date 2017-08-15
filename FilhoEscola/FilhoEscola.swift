@@ -10,6 +10,15 @@ import Foundation
 import ObjectMapper
 import SystemConfiguration
 
+
+extension Color {
+    
+    static let accent = Color.grey500
+    static let primary = Color.orange500
+    static let primaryDark = Color.orange800
+}
+
+
 class Dispositivo: Mappable {
     
     var status: Status = .naoVerificado

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="68" id="KGk-i7-Jjw" customClass="AlunoTableViewCell" customModule="FilhoEscola" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="72"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="71.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Userpic" translatesAutoresizingMaskIntoConstraints="NO" id="vXE-il-9Gx" customClass="CircleImage" customModule="FilhoEscola" customModuleProvider="target">
+                        <rect key="frame" x="16" y="16" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="K8T-Kp-ptK"/>
+                            <constraint firstAttribute="width" constant="40" id="eKz-ct-Z9m"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L6i-9T-Z6E" customClass="CircleLabel" customModule="FilhoEscola" customModuleProvider="target">
+                        <rect key="frame" x="272" y="20" width="32" height="32"/>
+                        <color key="backgroundColor" red="1" green="0.60009521245956421" blue="0.018032314255833626" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="32" id="F3b-b5-X7v"/>
+                            <constraint firstAttribute="height" constant="32" id="X5N-bM-OGX"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i1y-nz-tIU">
+                        <rect key="frame" x="72" y="26" width="192" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="3V6-eI-Kbg"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="L6i-9T-Z6E" secondAttribute="trailing" constant="16" id="1AU-w4-ik1"/>
+                    <constraint firstItem="i1y-nz-tIU" firstAttribute="leading" secondItem="vXE-il-9Gx" secondAttribute="trailing" constant="16" id="5ho-Qr-Dvg"/>
+                    <constraint firstItem="i1y-nz-tIU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="26" id="7dm-xd-dz5"/>
+                    <constraint firstItem="L6i-9T-Z6E" firstAttribute="leading" secondItem="i1y-nz-tIU" secondAttribute="trailing" constant="8" id="dU3-iI-eCc"/>
+                    <constraint firstItem="vXE-il-9Gx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="daK-J1-jpw"/>
+                    <constraint firstItem="vXE-il-9Gx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="gpD-Uh-Guc"/>
+                    <constraint firstItem="L6i-9T-Z6E" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="z9v-e6-H0y"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="fotoImageView" destination="vXE-il-9Gx" id="FXT-Ku-1wY"/>
+                <outlet property="nomeLabel" destination="i1y-nz-tIU" id="gxd-k8-9Es"/>
+                <outlet property="quantidadeLabel" destination="L6i-9T-Z6E" id="O7w-41-y4X"/>
+            </connections>
+            <point key="canvasLocation" x="23" y="110"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Userpic" width="225" height="225"/>
+    </resources>
+</document>

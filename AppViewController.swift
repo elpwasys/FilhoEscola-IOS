@@ -10,9 +10,6 @@ import RxSwift
 
 class AppViewController: UIViewController {
 
-    private var overlay: UIView!
-    private var indicator: UIActivityIndicatorView!
-    
     let disposableBag = DisposeBag()
     
     override func viewDidLoad() {
@@ -93,38 +90,10 @@ class AppViewController: UIViewController {
     }
     
     func showActivityIndicator() {
-        if overlay == nil {
-            // Overlay
-            overlay = UIView(frame: view.frame)
-            overlay.center = view.center
-            overlay.alpha = 0.5
-            overlay.backgroundColor = UIColor.black
-            // Indicator
-            indicator = UIActivityIndicatorView(activityIndicatorStyle: .white)
-            indicator.hidesWhenStopped = true
-            indicator.center = overlay.center
-            indicator.startAnimating()
-            // Add subview
-            var overlayView: UIView
-            /*
-            if let delegate = UIApplication.shared.delegate as? AppDelegate {
-                overlayView = (delegate.window?.subviews.first)!
-            } else {
-                overlayView = view
-            }
-            */
-            overlayView = super.view
-            overlayView.addSubview(overlay)
-            overlay.addSubview(indicator)
-        }
+        App.Loading.shared.show(view: self.view)
     }
     
     func hideActivityIndicator() {
-        if overlay != nil {
-            indicator.stopAnimating()
-            overlay.removeFromSuperview()
-            overlay = nil
-            indicator = nil
-        }
+        App.Loading.shared.hide()
     }
 }

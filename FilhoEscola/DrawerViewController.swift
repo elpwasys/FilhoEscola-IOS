@@ -8,34 +8,61 @@
 
 import UIKit
 
-class DrawerViewController: AppViewController, SWRevealViewControllerDelegate {
-
-    @IBOutlet weak var drawerButton: UIBarButtonItem!
+class DrawerViewController: AppViewController {
+    
+    fileprivate var overlay: UIView!
+    var drawerButton: UIBarButtonItem!
+    
+    var isLeftMenu = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let controller = revealViewController() {
-            controller.delegate = self
-            view.addGestureRecognizer(controller.panGestureRecognizer())
-            drawerButton.target = controller
-            drawerButton.action = #selector(SWRevealViewController.revealToggle(_:))
-        }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+        prepareDrawer()
+        prepareOverlay()
     }
     
-    func revealController(_ revealController: SWRevealViewController!, willMoveTo position: FrontViewPosition) {
-        let userInteractionEnabled: Bool
-        if position == .left {
-            userInteractionEnabled = true
-        } else {
-            userInteractionEnabled = false
+    fileprivate func prepareOverlay() {
+        if overlay == nil {
+            overlay = UIView()
+            overlay.frame = view.frame
+            overlay.center = view.center
+            overlay.alpha = 0.5
+            overlay.backgroundColor = UIColor.black
+            overlay.clipsToBounds = true
         }
+    }
+    
+    fileprivate func prepareDrawer() {
+        if isLeftMenu {
+            if let controller = revealViewController() {
+                controller.delegate = self
+                drawerButton = UIBarButtonItem(image: Icon.menu, style: .plain, target: nil, action: nil)
+                drawerButton.target = controller
+                drawerButton.action = #selector(SWRevealViewController.revealToggle(_:))
+                navigationItem.setLeftBarButton(drawerButton, animated: true)
+                view.addGestureRecognizer(controller.panGestureRecognizer())
+                view.addGestureRecognizer(controller.tapGestureRecognizer())
+            }
+        }
+    }
+}
+
+extension DrawerViewController: SWRevealViewControllerDelegate {
+    
+        func revealController(_ revealController: SWRevealViewController!, willMoveTo position: FrontViewPosition) {
         if position == .right {
             view.endEditing(true)
+            view.addSubview(overlay)
+        } else {
+            overlay.removeFromSuperview()
         }
-        view.isUserInteractionEnabled = userInteractionEnabled
+    }
+    
+    override func showActivityIndicator() {
+        if let controller = revealViewController() {
+            App.Loading.shared.show(view: controller.view)
+        } else {
+            super.showActivityIndicator()
+        }
     }
 }

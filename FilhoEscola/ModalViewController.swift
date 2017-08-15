@@ -19,14 +19,15 @@ class ModalViewController: UIViewController {
     @IBOutlet weak var conteudoTextView: UITextView!
     @IBOutlet weak var assuntoImageView: UIImageView!
     
-    private var key: AlunoKey?
     private var owner: UIViewController?
+    
+    private var aluno: AlunoModel?
     private var mensagem: MensagemModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let key = self.key {
-            ViewUtils.text(key.nome, for: alunoNomeLabel)
+        if let aluno = self.aluno {
+            ViewUtils.text(aluno.nome, for: alunoNomeLabel)
         }
         button.isHidden = true
         if let mensagem = self.mensagem {
@@ -70,9 +71,9 @@ class ModalViewController: UIViewController {
         }
     }
     
-    static func create(key: AlunoKey, mensagem: MensagemModel, owner: UIViewController) -> ModalViewController {
+    static func create(aluno: AlunoModel, mensagem: MensagemModel, owner: UIViewController) -> ModalViewController {
         let controller = ModalViewController(nibName: "ModalViewController", bundle: nil)
-        controller.key = key
+        controller.aluno = aluno
         controller.mensagem = mensagem
         controller.owner = owner
         return controller

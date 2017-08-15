@@ -47,8 +47,8 @@ class MenuTableViewController: UITableViewController {
         } else if indexPath.row == 2 {
             link = "aluno/configuracao.xhtml"
         } else if indexPath.row == 3 {
-            let controller = storyboard?.instantiateViewController(withIdentifier: "Scene.Mensagem")
-            revealViewController().pushFrontViewController(controller, animated: true)
+            let navigation = storyboard?.instantiateViewController(withIdentifier: "Navigation.AlunoList")
+            revealViewController().pushFrontViewController(navigation, animated: true)
         } else if indexPath.row == 5 {
             let navigation = storyboard?.instantiateViewController(withIdentifier: "Scene.Cache")
             revealViewController().pushFrontViewController(navigation, animated: true)
