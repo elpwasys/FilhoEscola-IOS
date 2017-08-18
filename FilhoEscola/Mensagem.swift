@@ -12,8 +12,16 @@ import RealmSwift
 class Mensagem: Object {
     
     dynamic var id = 0
-    dynamic var data = NSDate()
+    
+    dynamic var data = Date()
+    dynamic var dataLeitura: Date? = nil
+    dynamic var dataEnviada: Date? = nil
+    dynamic var dataAtualizacao: Date? = nil
+    
+    dynamic var status = ""
     dynamic var assunto = ""
+    dynamic var sincronizacao = ""
+    
     dynamic var conteudo = ""
     dynamic var botaoLink: String? = nil
     dynamic var botaoTexto: String? = nil
@@ -22,7 +30,7 @@ class Mensagem: Object {
     dynamic var funcionario: Funcionario?
     
     let alunos = LinkingObjects(fromType: Aluno.self, property: "mensagens")
-
+    
     override static func primaryKey() -> String? {
         return "id"
     }
@@ -33,7 +41,7 @@ class Mensagem: Object {
         }
         let mensagem = Mensagem()
         mensagem.id = id
-        mensagem.data = model.data as NSDate
+        mensagem.data = model.data
         mensagem.assunto = model.assunto.rawValue
         mensagem.conteudo = model.conteudo
         mensagem.botaoLink = model.botaoLink

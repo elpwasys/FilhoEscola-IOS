@@ -14,6 +14,21 @@ import RealmSwift
 
 class MensagemService: Service {
     
+    static func exists(id: Int) throws -> Bool {
+        let realm = try Realm()
+        let results = realm.objects(Mensagem.self).filter("id = %ld", id)
+        return !results.isEmpty
+    }
+    
+    static func filter(id: Int) throws -> MensagemModel? {
+        let realm = try Realm()
+        let results = realm.objects(Mensagem.self).filter("id = %ld", id)
+        if let mensagem = results.first {
+            return MensagemModel.from(mensagem)
+        }
+        return nil
+    }
+    
     static func sincronizar() throws {
         let url = "\(Config.restURL)/mensagem/buscar"
         let response: DataResponse<[MensagemModel]> = try Network.request(url, method: .post, encoding: JSONEncoding.default, headers: Device.headers).parse()
@@ -46,6 +61,42 @@ class MensagemService: Service {
             let mensagem = Mensagem.from(value)
             mensagem.escola = escola
             mensagem.funcionario = funcionario
+            // OBTEM O ANTERIOR
+            if let model: MensagemModel = try filter(id: value.id!) {
+                let dirty = (value.data != model.data)
+                    || (value.assunto != model.assunto)
+                        || (value.conteudo != model.conteudo)
+                            || (value.botaoLink != model.botaoLink)
+                                || (value.botaoTexto != model.botaoTexto)
+                if dirty {
+                    mensagem.status = MensagemModel.Status.atualizada.rawValue
+                    mensagem.sincronizacao = MensagemModel.Sincronizacao.aguardando.rawValue
+                    mensagem.dataEnviada = nil // LIMPA
+                    mensagem.dataLeitura = nil // LIMPA
+                    mensagem.dataAtualizacao = Date()
+                } else {
+                    mensagem.status = model.status.rawValue
+                    mensagem.sincronizacao = model.sincronizacao.rawValue
+                    mensagem.dataEnviada = model.dataEnviada
+                    mensagem.dataLeitura = model.dataLeitura
+                    mensagem.dataAtualizacao = model.dataAtualizacao
+                }
+            } else {
+                var status = MensagemModel.Status.criada
+                if value.status != nil { // SERVIDOR ENVIOU STATUS?
+                    status = value.status
+                }
+                mensagem.status = status.rawValue
+                var sincronizacao = MensagemModel.Sincronizacao.aguardando
+                if value.sincronizacao != nil { // SERVIDOR ENVIOU SINCRONIZACAO?
+                    sincronizacao = value.sincronizacao
+                    if sincronizacao == .enviada {
+                        mensagem.dataLeitura = value.dataLeitura
+                        mensagem.dataEnviada = value.dataEnviada
+                    }
+                }
+                mensagem.sincronizacao = sincronizacao.rawValue
+            }
             // ALUNO
             aluno!.escola = escola
             aluno!.mensagens.append(mensagem)
