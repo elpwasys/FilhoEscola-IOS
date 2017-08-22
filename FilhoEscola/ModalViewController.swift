@@ -9,6 +9,10 @@
 import UIKit
 import LSDialogViewController
 
+protocol ModalViewControllerDelegate {
+    func didRead(mensagem: MensagemModel)
+}
+
 class ModalViewController: UIViewController {
     
     @IBOutlet weak var button: Button!
@@ -20,6 +24,7 @@ class ModalViewController: UIViewController {
     @IBOutlet weak var assuntoImageView: UIImageView!
     
     private var owner: UIViewController?
+    var delegate: ModalViewControllerDelegate?
     
     private var aluno: AlunoModel?
     private var mensagem: MensagemModel?
@@ -42,6 +47,16 @@ class ModalViewController: UIViewController {
             if let botaoTexto = mensagem.botaoTexto {
                 button.isHidden = false
                 button.setTitle(botaoTexto, for: .normal)
+            }
+            if mensagem.status != .lida {
+                do {
+                    try MensagemService.atualizar(id: mensagem.id, status: .lida)
+                    if let delegate = self.delegate {
+                        delegate.didRead(mensagem: mensagem)
+                    }
+                } catch {
+                    
+                }
             }
         }
     }

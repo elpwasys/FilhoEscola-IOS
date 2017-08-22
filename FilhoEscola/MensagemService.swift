@@ -29,7 +29,52 @@ class MensagemService: Service {
         return nil
     }
     
+    static func atualizar(id: Int, status: MensagemModel.Status) throws {
+        let realm = try Realm()
+        let mensagem = realm.objects(Mensagem.self).filter("id = %ld", id).first!
+        try realm.write {
+            mensagem.status = status.rawValue
+        }
+    }
+    
     static func sincronizar() throws {
+        let realm = try Realm()
+        var results = realm.objects(Mensagem.self).filter("status = %@ and sincronizacao = %@", MensagemModel.Status.lida.rawValue, MensagemModel.Sincronizacao.aguardando.rawValue);
+        if !results.isEmpty {
+            var ids = [Int]()
+            for mensagem in results {
+                ids.append(mensagem.id)
+            }
+            if !ids.isEmpty {
+                try realm.write {
+                    for mensagem in results {
+                        mensagem.sincronizacao = MensagemModel.Sincronizacao.enviando.rawValue
+                    }
+                }
+                // Enviar para o servidor
+                var sincronizacao = MensagemModel.Sincronizacao.enviada
+                let url = "\(Config.restURL)/mensagem/sincronizar/ios"
+                let dictionary = ["id": ids]
+                let response: DataResponse<ResultModel> = try Network.request(url, method: .post, parameters: dictionary, headers: Device.headers).parse()
+                let result = response.result
+                if result.isFailure {
+                    // caso der erro no servidor
+                    sincronizacao = .aguardando
+                }
+                results = realm.objects(Mensagem.self).filter("id in %ld", ids)
+                try realm.write {
+                    for mensagem in results {
+                        mensagem.sincronizacao = sincronizacao.rawValue
+                        if sincronizacao == .enviada {
+                            mensagem.dataEnviada = Date()
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    static func buscar() throws {
         let url = "\(Config.restURL)/mensagem/buscar"
         let response: DataResponse<[MensagemModel]> = try Network.request(url, method: .post, encoding: JSONEncoding.default, headers: Device.headers).parse()
         let result = response.result

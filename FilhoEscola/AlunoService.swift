@@ -16,7 +16,7 @@ class AlunoService: Service {
     
     static func listar(sync: Bool = false) throws -> [AlunoModel] {
         if sync {
-            try MensagemService.sincronizar()
+            try MensagemService.buscar()
         }
         let realm = try Realm()
         let results = realm.objects(Aluno.self)

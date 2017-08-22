@@ -7,9 +7,17 @@
 //
 
 import Foundation
+
+import Alamofire
 import ObjectMapper
 import SystemConfiguration
 
+extension URLEncoding {
+    
+    func queryComponents(fromKey key: String, value: Any) -> [(String, String)] {
+        return [(String, String)]()
+    }
+}
 
 extension Color {
     
@@ -28,6 +36,7 @@ class Dispositivo: Mappable {
     var token: String!
     var numero: String!
     var prefixo: String!
+    var pushToken: String!
     var dataNascimento: Date!
     
     var imagemURI: String!
@@ -47,6 +56,9 @@ class Dispositivo: Mappable {
                 if let value = defaults.value(forKey: token) as? String {
                     model?.token = value
                 }
+                if let value = defaults.value(forKey: pushToken) as? String {
+                    model?.pushToken = value
+                }
                 if let value = defaults.value(forKey: imagemURI) as? String {
                     model?.imagemURI = value
                 }
@@ -64,6 +76,7 @@ class Dispositivo: Mappable {
                 defaults.set(model.status.rawValue, forKey: status)
                 defaults.set(model.numero, forKey: numero)
                 defaults.set(model.prefixo, forKey: prefixo)
+                defaults.set(model.pushToken, forKey: pushToken)
                 defaults.set(model.dataNascimento, forKey: dataNascimento)
                 if model.token != nil {
                     defaults.set(model.token, forKey: token)
@@ -78,6 +91,7 @@ class Dispositivo: Mappable {
                 defaults.removeObject(forKey: status)
                 defaults.removeObject(forKey: numero)
                 defaults.removeObject(forKey: prefixo)
+                defaults.removeObject(forKey: pushToken)
                 defaults.removeObject(forKey: imagemURI)
                 defaults.removeObject(forKey: dataNascimento)
             }
@@ -96,6 +110,7 @@ class Dispositivo: Mappable {
     private static let status = "\(Dispositivo.self).status"
     private static let numero = "\(Dispositivo.self).numero"
     private static let prefixo = "\(Dispositivo.self).prefixo"
+    private static let pushToken = "\(Dispositivo.self).pushToken"
     private static let imagemURI = "\(Dispositivo.self).imagemURI"
     private static let dataNascimento = "\(Dispositivo.self).dataNascimento"
     
@@ -118,6 +133,7 @@ class Dispositivo: Mappable {
         status <- map["status"]
         numero <- map["numero"]
         prefixo <- map["prefixo"]
+        pushToken <- map["pushToken"]
         imagemURI <- map["imagemURI"]
         dataNascimento <- (map["dataNascimento"], DateTransformType())
     }
@@ -132,6 +148,9 @@ class Dispositivo: Mappable {
         ]
         if let token = self.token {
             hash["token"] = token
+        }
+        if let pushToken = self.pushToken {
+            hash["pushToken"] = pushToken
         }
         return hash
     }

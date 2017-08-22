@@ -47,6 +47,20 @@ extension AlunoTableViewCell {
     
     func prepare(_ model: AlunoModel) {
         ViewUtils.text(model.nome, for: nomeLabel)
-        ViewUtils.text(model.mensagens?.count ?? 0, for: quantidadeLabel)
+        var count = 0
+        if let mensagens = model.mensagens {
+            for mensagem in mensagens {
+                if mensagem.status != .lida {
+                    count += 1
+                }
+            }
+        }
+        if count == 0 {
+            quantidadeLabel.text = nil
+            quantidadeLabel.isHidden = true
+        } else {
+            quantidadeLabel.isHidden = false
+            ViewUtils.text(count, for: quantidadeLabel)
+        }
     }
 }

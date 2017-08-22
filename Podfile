@@ -1,9 +1,12 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '10.3'
+platform :ios, '9.0'
+use_frameworks!
+
+workspace 'FilhoEscola.xcworkspace'
 
 target 'FilhoEscola' do
-  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
-  use_frameworks!
+
+  project 'FilhoEscola.xcodeproj'
 
   # Pods for FilhoEscola
   pod 'RxSwift', '~> 3.0'

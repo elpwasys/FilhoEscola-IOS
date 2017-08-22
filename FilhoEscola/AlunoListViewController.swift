@@ -18,11 +18,22 @@ class AlunoListViewController: DrawerViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.prepare()
-        self.carregar()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if models.isEmpty {
+            self.carregar()
+        } else {
+            self.tableView.reloadData()
+        }
     }
 }
 
 extension AlunoListViewController {
+    
+    func carregar() {
+        self.iniciarAsyncTask()
+    }
     
     fileprivate func prepare() {
         tableView.delegate = self
@@ -31,10 +42,6 @@ extension AlunoListViewController {
         tableView.separatorInset = AlunoTableViewCell.separatorInset
         tableView.tableFooterView = UIView()
         tableView.register(UINib(nibName: AlunoTableViewCell.nibName, bundle: nil), forCellReuseIdentifier: AlunoTableViewCell.reusableCellIdentifier)
-    }
-    
-    fileprivate func carregar() {
-        self.iniciarAsyncTask()
     }
 }
 

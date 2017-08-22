@@ -16,13 +16,16 @@ class FrontViewController: DrawerViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        let navigation = storyboard?.instantiateViewController(withIdentifier: "Scene.Web")
-        let controller = navigation?.childViewControllers.first as! WebViewController
-        controller.link = "aluno/configuracao.xhtml"
-        revealViewController().pushFrontViewController(navigation, animated: true)
+        if PushNotification.exists() {
+            PushNotification.navigate(from: self)
+        } else {
+            let navigation = storyboard?.instantiateViewController(withIdentifier: "Scene.Web")
+            let controller = navigation?.childViewControllers.first as! WebViewController
+            controller.link = "aluno/configuracao.xhtml"
+            revealViewController().pushFrontViewController(navigation, animated: true)
+        }
     }
 }

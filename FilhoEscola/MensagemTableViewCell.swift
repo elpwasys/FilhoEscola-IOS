@@ -42,6 +42,10 @@ extension MensagemTableViewCell {
     func prepare(_ mensagem: MensagemModel) {
         ViewUtils.text(mensagem.conteudo, for: conteudoLabel)
         ViewUtils.text(mensagem.assunto.label, for: assuntoLabel)
+        conteudoLabel.font = UIFont.systemFont(ofSize: 14, weight: UIFontWeightThin)
+        if mensagem.status != .lida {
+            conteudoLabel.font = UIFont.systemFont(ofSize: 14, weight: UIFontWeightBold)
+        }
         assuntoImageView.image = mensagem.assunto.image
         if let imagem = mensagem.escola.imagem {
             if let url = URL(string: "\(Config.fileURL)/\(imagem.caminho!)") {

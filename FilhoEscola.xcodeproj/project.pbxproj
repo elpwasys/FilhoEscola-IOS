@@ -16,6 +16,7 @@
 		EE30241C1ECC9AA200B7F010 /* FuncionarioModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE30241B1ECC9AA200B7F010 /* FuncionarioModel.swift */; };
 		EE3D4BDB1EBE4C6800243C38 /* MensagemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3D4BD91EBE4C6800243C38 /* MensagemTableViewCell.swift */; };
 		EE3D4BDC1EBE4C6800243C38 /* MensagemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE3D4BDA1EBE4C6800243C38 /* MensagemTableViewCell.xib */; };
+		EE4D90451F4A480F00549152 /* PushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4D90441F4A480F00549152 /* PushNotification.swift */; };
 		EE7B26CF1F421F4C0084D96A /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7B26CE1F421F4C0084D96A /* Icon.swift */; };
 		EE7B26D11F421F5B0084D96A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE7B26D01F421F5B0084D96A /* Assets.xcassets */; };
 		EECD943A1EBCAAC0009919CA /* CircleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECD94381EBCAAC0009919CA /* CircleLabel.swift */; };
@@ -90,8 +91,10 @@
 
 /* Begin PBXFileReference section */
 		69F7B5F5ADFA81D58520BBBF /* Pods_FilhoEscola.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FilhoEscola.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		80C433397419DD66357B7C01 /* Pods-FilhoEscola.ad hoc distribuction.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FilhoEscola.ad hoc distribuction.xcconfig"; path = "Pods/Target Support Files/Pods-FilhoEscola/Pods-FilhoEscola.ad hoc distribuction.xcconfig"; sourceTree = "<group>"; };
 		CAC51ECEDB7B18A7644D067C /* Pods-FilhoEscola.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FilhoEscola.release.xcconfig"; path = "Pods/Target Support Files/Pods-FilhoEscola/Pods-FilhoEscola.release.xcconfig"; sourceTree = "<group>"; };
 		D3C30380CB4536B1234D79D8 /* Pods-FilhoEscola.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FilhoEscola.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FilhoEscola/Pods-FilhoEscola.debug.xcconfig"; sourceTree = "<group>"; };
+		EE1DAD381F4A1A740059BB6E /* FilhoEscola.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FilhoEscola.entitlements; sourceTree = "<group>"; };
 		EE3024071ECC75D700B7F010 /* ImagemModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagemModel.swift; sourceTree = "<group>"; };
 		EE30240F1ECC806E00B7F010 /* MensagemService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MensagemService.swift; sourceTree = "<group>"; };
 		EE3024111ECC850000B7F010 /* Escola.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Escola.swift; sourceTree = "<group>"; };
@@ -101,6 +104,7 @@
 		EE30241B1ECC9AA200B7F010 /* FuncionarioModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FuncionarioModel.swift; sourceTree = "<group>"; };
 		EE3D4BD91EBE4C6800243C38 /* MensagemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MensagemTableViewCell.swift; sourceTree = "<group>"; };
 		EE3D4BDA1EBE4C6800243C38 /* MensagemTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MensagemTableViewCell.xib; sourceTree = "<group>"; };
+		EE4D90441F4A480F00549152 /* PushNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotification.swift; sourceTree = "<group>"; };
 		EE7B26CE1F421F4C0084D96A /* Icon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
 		EE7B26D01F421F5B0084D96A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EECD94381EBCAAC0009919CA /* CircleLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleLabel.swift; sourceTree = "<group>"; };
@@ -193,6 +197,7 @@
 			children = (
 				D3C30380CB4536B1234D79D8 /* Pods-FilhoEscola.debug.xcconfig */,
 				CAC51ECEDB7B18A7644D067C /* Pods-FilhoEscola.release.xcconfig */,
+				80C433397419DD66357B7C01 /* Pods-FilhoEscola.ad hoc distribuction.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -264,6 +269,7 @@
 				EEE4AEF81EAD8DC900AA2539 /* config.plist */,
 				EEE4AEF91EAD8DC900AA2539 /* Localizable.strings */,
 				EEE4AEF61EAD8DB900AA2539 /* Device.js */,
+				EE1DAD381F4A1A740059BB6E /* FilhoEscola.entitlements */,
 				EEE4AEC41EAD726F00AA2539 /* Assets.xcassets */,
 				EEE4AEF51EAD8DAB00AA2539 /* Supporting Files */,
 			);
@@ -346,6 +352,7 @@
 				EEE4AF141EAD8FC900AA2539 /* FilhoEscola.swift */,
 				EEE4AF151EAD8FC900AA2539 /* AppDelegate.swift */,
 				EEE4AF161EAD8FC900AA2539 /* AppURLProtocol.swift */,
+				EE4D90441F4A480F00549152 /* PushNotification.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -452,7 +459,12 @@
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = A5AW2855YQ;
 						LastSwiftMigration = 0830;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -558,6 +570,7 @@
 				EEE4AEDA1EAD8D8000AA2539 /* NumberUtils.swift in Sources */,
 				EE3024081ECC75D700B7F010 /* ImagemModel.swift in Sources */,
 				EEE4AF291EAD90D200AA2539 /* DrawerViewController.swift in Sources */,
+				EE4D90451F4A480F00549152 /* PushNotification.swift in Sources */,
 				EED196801F38F7CE00509675 /* AlunoListViewController.swift in Sources */,
 				EEE4AF111EAD8F6800AA2539 /* ViewModel.swift in Sources */,
 				EEE4AEEF1EAD8D9400AA2539 /* App.swift in Sources */,
@@ -621,6 +634,70 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		EE2CF2361F4B70EA0034CF95 /* Ad Hoc Distribuction */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "Ad Hoc Distribuction";
+		};
+		EE2CF2371F4B70EA0034CF95 /* Ad Hoc Distribuction */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 80C433397419DD66357B7C01 /* Pods-FilhoEscola.ad hoc distribuction.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = FilhoEscola/FilhoEscola.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Webwasys Informatica Ltda Epp (A5AW2855YQ)";
+				DEVELOPMENT_TEAM = A5AW2855YQ;
+				INFOPLIST_FILE = FilhoEscola/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.wasys.FilhoEscola;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "e0d0145e-83f4-4c5d-b6d0-3e57985a5882";
+				PROVISIONING_PROFILE_SPECIFIER = "Filho na escola Ad Hoc";
+				SWIFT_OBJC_BRIDGING_HEADER = "FilhoEscola/FilhoEscola-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = "Ad Hoc Distribuction";
+		};
 		EEE4AECA1EAD726F00AA2539 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -722,11 +799,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = FilhoEscola/FilhoEscola.entitlements;
 				DEVELOPMENT_TEAM = A5AW2855YQ;
 				INFOPLIST_FILE = FilhoEscola/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.wasys.FilhoEscola;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "502fdbff-0343-45c1-9fb1-c9cccde0d997";
+				PROVISIONING_PROFILE_SPECIFIER = "Filho na escola Dev";
 				SWIFT_OBJC_BRIDGING_HEADER = "FilhoEscola/FilhoEscola-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -739,11 +819,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = FilhoEscola/FilhoEscola.entitlements;
 				DEVELOPMENT_TEAM = A5AW2855YQ;
 				INFOPLIST_FILE = FilhoEscola/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.wasys.FilhoEscola;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "502fdbff-0343-45c1-9fb1-c9cccde0d997";
+				PROVISIONING_PROFILE_SPECIFIER = "Filho na escola Dev";
 				SWIFT_OBJC_BRIDGING_HEADER = "FilhoEscola/FilhoEscola-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
@@ -757,6 +840,7 @@
 			buildConfigurations = (
 				EEE4AECA1EAD726F00AA2539 /* Debug */,
 				EEE4AECB1EAD726F00AA2539 /* Release */,
+				EE2CF2361F4B70EA0034CF95 /* Ad Hoc Distribuction */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -766,6 +850,7 @@
 			buildConfigurations = (
 				EEE4AECD1EAD726F00AA2539 /* Debug */,
 				EEE4AECE1EAD726F00AA2539 /* Release */,
+				EE2CF2371F4B70EA0034CF95 /* Ad Hoc Distribuction */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

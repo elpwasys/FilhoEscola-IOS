@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class DrawerViewController: AppViewController {
     
@@ -19,7 +20,21 @@ class DrawerViewController: AppViewController {
         super.viewDidLoad()
         prepareDrawer()
         prepareOverlay()
+        UNUserNotificationCenter.current().delegate = self
+        self.initObservers()
+        self.askPushToken()
     }
+    
+    override func showActivityIndicator() {
+        if let controller = revealViewController() {
+            App.Loading.shared.show(view: controller.view)
+        } else {
+            super.showActivityIndicator()
+        }
+    }
+}
+
+extension DrawerViewController {
     
     fileprivate func prepareOverlay() {
         if overlay == nil {
@@ -45,6 +60,46 @@ class DrawerViewController: AppViewController {
             }
         }
     }
+    
+    fileprivate func initObservers() {
+        if let delegate = UIApplication.shared.delegate as? AppDelegate {
+            let center = NotificationCenter.default
+            center.addObserver(forName: delegate.pushTokenNotificationName, object: nil, queue: nil) { notification in
+                if let pushToken = notification.object as? String {
+                    self.answerPushToken(pushToken: pushToken)
+                }
+            }
+            center.addObserver(forName: delegate.didBecomeActiveNotificationName, object: nil, queue: nil) { notification in
+                self.askPushToken()
+            }
+        }
+    }
+    
+    fileprivate func askPushToken() {
+        if let dispositivo = Dispositivo.current {
+            if dispositivo.pushToken == nil {
+                if let delegate = UIApplication.shared.delegate as? AppDelegate, let pushToken = delegate.pushToken {
+                    self.answerPushToken(pushToken: pushToken)
+                } else {
+                    UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .sound, .alert]) { (granted, error) in
+                        if granted {
+                            UIApplication.shared.registerForRemoteNotifications()
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    fileprivate func answerPushToken(pushToken: String) {
+        let observable = DispositivoService.Async.atualizar(pushToken: pushToken)
+        prepare(for: observable)
+            .subscribe(
+                onError: { error in
+                    self.handle(error)
+                }
+            ).addDisposableTo(disposableBag)
+    }
 }
 
 extension DrawerViewController: SWRevealViewControllerDelegate {
@@ -57,12 +112,22 @@ extension DrawerViewController: SWRevealViewControllerDelegate {
             overlay.removeFromSuperview()
         }
     }
+}
+
+extension DrawerViewController: UNUserNotificationCenterDelegate {
     
-    override func showActivityIndicator() {
-        if let controller = revealViewController() {
-            App.Loading.shared.show(view: controller.view)
-        } else {
-            super.showActivityIndicator()
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .sound])
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        let notification = response.notification
+        let request = notification.request
+        let content = request.content
+        let userInfo = content.userInfo
+        if let data = userInfo["data"] as? [String: Any] {
+            PushNotification.navigate(from: self, with: data)
         }
+        completionHandler()
     }
 }

@@ -38,7 +38,7 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="54" id="0Jy-ax-eQS"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -73,6 +73,7 @@
                 <outlet property="conteudoLabel" destination="kkB-tF-X3R" id="lhH-sB-DXl"/>
                 <outlet property="escolaImageView" destination="SvN-D3-Rvf" id="Tpb-ez-aMz"/>
             </connections>
+            <point key="canvasLocation" x="34.5" y="54"/>
         </tableViewCell>
     </objects>
 </document>

@@ -13,6 +13,18 @@ import Alamofire
 
 class DispositivoService: Service {
     
+    static func atualizar(pushToken: String) throws -> Dispositivo {
+        let url = "\(Config.restURL)/dispositivo/atualizar/push/\(pushToken)"
+        let response: DataResponse<Dispositivo> = try Network.request(url, method: .get, encoding: JSONEncoding.default, headers: Device.headers).parse()
+        let result = response.result
+        if result.isFailure {
+            throw result.error!
+        }
+        let model = result.value!
+        Dispositivo.current = model
+        return model
+    }
+    
     static func verificar(prefixo: String, numero: String, codigo: String) throws -> Dispositivo {
         let url = "\(Config.restURL)/dispositivo/verificar/\(prefixo)/\(numero)/\(codigo)"
         let response: DataResponse<Dispositivo> = try Network.request(url, method: .get, encoding: JSONEncoding.default, headers: Device.headers).parse()
@@ -51,6 +63,18 @@ class DispositivoService: Service {
     }
     
     class Async {
+        static func atualizar(pushToken: String) -> Observable<Dispositivo> {
+            return Observable.create { observer in
+                do {
+                    let result = try DispositivoService.atualizar(pushToken: pushToken)
+                    observer.onNext(result)
+                    observer.onCompleted()
+                } catch {
+                    observer.onError(error)
+                }
+                return Disposables.create()
+            }
+        }
         static func verificar(prefixo: String, numero: String, codigo: String) -> Observable<Dispositivo> {
             return Observable.create { observer in
                 do {
