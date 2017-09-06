@@ -8,14 +8,24 @@
 
 import UIKit
 
+protocol AlunoTableViewCellDelegate {
+    
+    func onThumbnailTapped(_ cell: AlunoTableViewCell)
+}
+
 class AlunoTableViewCell: UITableViewCell {
 
     @IBOutlet weak var fotoImageView: CircleImage!
     @IBOutlet weak var nomeLabel: UILabel!
     @IBOutlet weak var quantidadeLabel: CircleLabel!
     
+    var delegate: AlunoTableViewCellDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(onPhotoTapped))
+        fotoImageView.addGestureRecognizer(gestureRecognizer)
+        fotoImageView.isUserInteractionEnabled = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -61,6 +71,17 @@ extension AlunoTableViewCell {
         } else {
             quantidadeLabel.isHidden = false
             ViewUtils.text(count, for: quantidadeLabel)
+        }
+        if let data = model.foto {
+            fotoImageView.image = UIImage(data: data)
+        } else {
+            fotoImageView.image = UIImage(named: "Userpic");
+        }
+    }
+    
+    @objc fileprivate func onPhotoTapped() {
+        if let delegate = self.delegate {
+            delegate.onThumbnailTapped(self)
         }
     }
 }

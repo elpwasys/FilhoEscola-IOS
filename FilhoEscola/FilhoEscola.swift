@@ -37,7 +37,6 @@ class Dispositivo: Mappable {
     var numero: String!
     var prefixo: String!
     var pushToken: String!
-    var dataNascimento: Date!
     
     var imagemURI: String!
     
@@ -50,9 +49,8 @@ class Dispositivo: Mappable {
             if let uuid = defaults.value(forKey: uuid) as? String,
                 let nome = defaults.value(forKey: nome) as? String,
                 let numero = defaults.value(forKey: numero) as? String,
-                let prefixo = defaults.value(forKey: prefixo) as? String,
-                let dataNascimento = defaults.value(forKey: dataNascimento) as? Date {
-                model = Dispositivo(uuid: uuid, nome: nome, numero: numero, prefixo: prefixo, dataNascimento: dataNascimento)
+                let prefixo = defaults.value(forKey: prefixo) as? String {
+                model = Dispositivo(uuid: uuid, nome: nome, numero: numero, prefixo: prefixo)
                 if let value = defaults.value(forKey: token) as? String {
                     model?.token = value
                 }
@@ -77,7 +75,6 @@ class Dispositivo: Mappable {
                 defaults.set(model.numero, forKey: numero)
                 defaults.set(model.prefixo, forKey: prefixo)
                 defaults.set(model.pushToken, forKey: pushToken)
-                defaults.set(model.dataNascimento, forKey: dataNascimento)
                 if model.token != nil {
                     defaults.set(model.token, forKey: token)
                 }
@@ -93,7 +90,6 @@ class Dispositivo: Mappable {
                 defaults.removeObject(forKey: prefixo)
                 defaults.removeObject(forKey: pushToken)
                 defaults.removeObject(forKey: imagemURI)
-                defaults.removeObject(forKey: dataNascimento)
             }
             NotificationCenter.default.post(name: updateNotificationName, object: newValue)
         }
@@ -112,14 +108,12 @@ class Dispositivo: Mappable {
     private static let prefixo = "\(Dispositivo.self).prefixo"
     private static let pushToken = "\(Dispositivo.self).pushToken"
     private static let imagemURI = "\(Dispositivo.self).imagemURI"
-    private static let dataNascimento = "\(Dispositivo.self).dataNascimento"
     
-    init(uuid: String, nome: String, numero: String, prefixo: String, dataNascimento: Date) {
+    init(uuid: String, nome: String, numero: String, prefixo: String) {
         self.uuid = uuid
         self.nome = nome
         self.numero = numero
         self.prefixo = prefixo
-        self.dataNascimento = dataNascimento
     }
     
     required init?(map: Map) {
@@ -135,7 +129,6 @@ class Dispositivo: Mappable {
         prefixo <- map["prefixo"]
         pushToken <- map["pushToken"]
         imagemURI <- map["imagemURI"]
-        dataNascimento <- (map["dataNascimento"], DateTransformType())
     }
     
     func dictonary() -> [String: String] {
@@ -143,8 +136,7 @@ class Dispositivo: Mappable {
             "uuid": uuid,
             "nome": nome,
             "numero": numero,
-            "prefixo": prefixo,
-            "dataNascimento": DateUtils.format(dataNascimento, type: .dateBr)
+            "prefixo": prefixo
         ]
         if let token = self.token {
             hash["token"] = token

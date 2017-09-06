@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         URLProtocol.registerClass(AppURLProtocol.self)
         
         let color = Color.primary
-        UITextField.appearance().tintColor = UIColor.white
+        //UITextField.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().barTintColor = color
         UINavigationBar.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().isTranslucent = false

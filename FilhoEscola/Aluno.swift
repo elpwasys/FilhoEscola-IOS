@@ -11,9 +11,10 @@ import RealmSwift
 
 class Aluno: Object {
     
-    dynamic var id = 0
+    dynamic var key = 0
     dynamic var nome = ""
     dynamic var nomeMae = ""
+    dynamic var foto: Data? = nil
     dynamic var dataNascimento = NSDate()
     
     dynamic var escola: Escola?
@@ -21,15 +22,13 @@ class Aluno: Object {
     let mensagens = List<Mensagem>()
     
     override static func primaryKey() -> String? {
-        return "id"
+        return "key"
     }
     
     static func from(_ model: AlunoModel) -> Aluno {
-        guard let id = model.id else {
-            fatalError("AlunoModel.id is nil.")
-        }
         let aluno = Aluno()
-        aluno.id = id
+        aluno.key = model.key.hashValue
+        aluno.foto = model.foto
         aluno.nome = model.nome
         aluno.nomeMae = model.nomeMae
         aluno.dataNascimento = model.dataNascimento as NSDate

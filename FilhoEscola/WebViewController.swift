@@ -121,7 +121,7 @@ extension WebViewController {
                 button.addTarget(self, action: #selector(onTappedBarButtonItem(button:)), for: .touchUpInside)
                 button.setImage(image.withRenderingMode(.alwaysTemplate), for: .normal)
                 button.frame = CGRect(x: 0, y: 0, width: 32, height: 32)
-                button.tintColor = UIColor.black
+                button.tintColor = UIColor.white
                 items.append(UIBarButtonItem(customView: button))
             }
         }

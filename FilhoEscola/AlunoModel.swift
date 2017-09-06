@@ -22,12 +22,12 @@ class AlunoKey: Hashable {
         return text.hashValue
     }
     
-    static func join(nome: String, nomeMae: String, dataNascimento: Date) -> String {
-        return "\(TextUtils.folding(nome)),\(TextUtils.folding(nomeMae)),\(DateUtils.format(dataNascimento, type: .dateBr))"
-    }
-    
     static func ==(lhs: AlunoKey, rhs: AlunoKey) -> Bool {
         return lhs.hashValue == rhs.hashValue
+    }
+    
+    static func join(nome: String, nomeMae: String, dataNascimento: Date) -> String {
+        return "\(TextUtils.folding(nome)),\(TextUtils.folding(nomeMae)),\(DateUtils.format(dataNascimento, type: .dateBr))"
     }
     
     init(nome: String, nomeMae: String, dataNascimento: Date) {
@@ -46,6 +46,10 @@ class AlunoModel: Model {
     var foto: Data?
     var mensagens: [MensagemModel]?
     
+    lazy var key: AlunoKey = {
+       return AlunoKey(nome: self.nome, nomeMae: self.nomeMae, dataNascimento: self.dataNascimento)
+    }()
+    
     override func mapping(map: Map) {
         super.mapping(map: map)
         let dateTransform = DateTransformType()
@@ -55,13 +59,21 @@ class AlunoModel: Model {
         mensagens <- map["mensagens"]
     }
     
-    static func from(_ aluno: Aluno) -> AlunoModel {
+    func atualizar(_ model: AlunoModel) {
+        nome = model.nome
+        nomeMae = model.nomeMae
+        dataNascimento = model.dataNascimento
+    }
+    
+    static func from(_ aluno: Aluno, withMessages: Bool = true) -> AlunoModel {
         let model = AlunoModel()
-        model.id = aluno.id
         model.nome = aluno.nome
+        model.foto = aluno.foto
         model.nomeMae = aluno.nomeMae
         model.dataNascimento = aluno.dataNascimento as Date
-        model.mensagens = MensagemModel.from(aluno.mensagens)
+        if (withMessages) {
+            model.mensagens = MensagemModel.from(aluno.mensagens)
+        }
         return model
     }
     
@@ -71,26 +83,5 @@ class AlunoModel: Model {
             models.append(from(result))
         }
         return models
-    }
-    
-    class Key: Hashable {
-        
-        let nome: String
-        let nomeMae: String
-        let dataNascimento: Date
-        
-        var hashValue: Int {
-            return "\(nome),\(nomeMae),\(DateUtils.format(dataNascimento, type: .dateBr))".hashValue
-        }
-        
-        static func ==(lhs: Key, rhs: Key) -> Bool {
-            return lhs.hashValue == rhs.hashValue
-        }
-        
-        init(nome: String, nomeMae: String, dataNascimento: Date) {
-            self.nome = nome
-            self.nomeMae = nomeMae
-            self.dataNascimento = dataNascimento
-        }
     }
 }

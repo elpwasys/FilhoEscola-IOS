@@ -22,13 +22,15 @@ class MensagemModel: Model {
     var botaoLink: String?
     var botaoTexto: String?
     
+    var status: Status!
+    var assunto: Assunto!
+    var sincronizacao: Sincronizacao!
+    
     var aluno: AlunoModel!
     var escola: EscolaModel!
     var funcionario: FuncionarioModel!
     
-    var status: Status!
-    var assunto: Assunto!
-    var sincronizacao: Sincronizacao!
+    var alunos: [AlunoModel]?
     
     enum Status: String {
         case lida = "LIDA"

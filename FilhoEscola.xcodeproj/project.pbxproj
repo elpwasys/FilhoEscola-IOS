@@ -14,6 +14,7 @@
 		EE3024181ECC96C800B7F010 /* Mensagem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3024171ECC96C800B7F010 /* Mensagem.swift */; };
 		EE30241A1ECC97CC00B7F010 /* Funcionario.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3024191ECC97CC00B7F010 /* Funcionario.swift */; };
 		EE30241C1ECC9AA200B7F010 /* FuncionarioModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE30241B1ECC9AA200B7F010 /* FuncionarioModel.swift */; };
+		EE34CF491F5DCD4C0038241B /* AlunoCadastroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE34CF481F5DCD4C0038241B /* AlunoCadastroViewController.swift */; };
 		EE3D4BDB1EBE4C6800243C38 /* MensagemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3D4BD91EBE4C6800243C38 /* MensagemTableViewCell.swift */; };
 		EE3D4BDC1EBE4C6800243C38 /* MensagemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE3D4BDA1EBE4C6800243C38 /* MensagemTableViewCell.xib */; };
 		EE4D90451F4A480F00549152 /* PushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4D90441F4A480F00549152 /* PushNotification.swift */; };
@@ -35,6 +36,8 @@
 		EED8EA691EBA8030006F9AC1 /* AlunoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED8EA681EBA8030006F9AC1 /* AlunoModel.swift */; };
 		EED8EA6D1EBA8207006F9AC1 /* EscolaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED8EA6C1EBA8207006F9AC1 /* EscolaModel.swift */; };
 		EED8EA6F1EBA85D8006F9AC1 /* MensagemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED8EA6E1EBA85D8006F9AC1 /* MensagemModel.swift */; };
+		EEDDC78F1F5EDD3D00AE57F3 /* AlunoSolicitacaoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDDC78E1F5EDD3D00AE57F3 /* AlunoSolicitacaoModel.swift */; };
+		EEDDC7911F5F13C100AE57F3 /* MensagemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDDC7901F5F13C100AE57F3 /* MensagemViewController.swift */; };
 		EEE20F011ECDD06E00D64B5D /* Imagem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE20F001ECDD06E00D64B5D /* Imagem.swift */; };
 		EEE20F041ECDE05D00D64B5D /* ExternalWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE20F021ECDE05D00D64B5D /* ExternalWebViewController.swift */; };
 		EEE20F051ECDE05D00D64B5D /* ExternalWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEE20F031ECDE05D00D64B5D /* ExternalWebViewController.xib */; };
@@ -102,6 +105,7 @@
 		EE3024171ECC96C800B7F010 /* Mensagem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mensagem.swift; sourceTree = "<group>"; };
 		EE3024191ECC97CC00B7F010 /* Funcionario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Funcionario.swift; sourceTree = "<group>"; };
 		EE30241B1ECC9AA200B7F010 /* FuncionarioModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FuncionarioModel.swift; sourceTree = "<group>"; };
+		EE34CF481F5DCD4C0038241B /* AlunoCadastroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlunoCadastroViewController.swift; sourceTree = "<group>"; };
 		EE3D4BD91EBE4C6800243C38 /* MensagemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MensagemTableViewCell.swift; sourceTree = "<group>"; };
 		EE3D4BDA1EBE4C6800243C38 /* MensagemTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MensagemTableViewCell.xib; sourceTree = "<group>"; };
 		EE4D90441F4A480F00549152 /* PushNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotification.swift; sourceTree = "<group>"; };
@@ -123,6 +127,8 @@
 		EED8EA681EBA8030006F9AC1 /* AlunoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlunoModel.swift; sourceTree = "<group>"; };
 		EED8EA6C1EBA8207006F9AC1 /* EscolaModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EscolaModel.swift; sourceTree = "<group>"; };
 		EED8EA6E1EBA85D8006F9AC1 /* MensagemModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MensagemModel.swift; sourceTree = "<group>"; };
+		EEDDC78E1F5EDD3D00AE57F3 /* AlunoSolicitacaoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlunoSolicitacaoModel.swift; sourceTree = "<group>"; };
+		EEDDC7901F5F13C100AE57F3 /* MensagemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MensagemViewController.swift; sourceTree = "<group>"; };
 		EEE20F001ECDD06E00D64B5D /* Imagem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Imagem.swift; sourceTree = "<group>"; };
 		EEE20F021ECDE05D00D64B5D /* ExternalWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExternalWebViewController.swift; sourceTree = "<group>"; };
 		EEE20F031ECDE05D00D64B5D /* ExternalWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExternalWebViewController.xib; sourceTree = "<group>"; };
@@ -374,6 +380,8 @@
 				EEE20F031ECDE05D00D64B5D /* ExternalWebViewController.xib */,
 				EED1967F1F38F7CE00509675 /* AlunoListViewController.swift */,
 				EED341071F39F97100A8AB0F /* MensagemCalendarViewController.swift */,
+				EE34CF481F5DCD4C0038241B /* AlunoCadastroViewController.swift */,
+				EEDDC7901F5F13C100AE57F3 /* MensagemViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -405,6 +413,7 @@
 				EED8EA6E1EBA85D8006F9AC1 /* MensagemModel.swift */,
 				EE3024071ECC75D700B7F010 /* ImagemModel.swift */,
 				EE30241B1ECC9AA200B7F010 /* FuncionarioModel.swift */,
+				EEDDC78E1F5EDD3D00AE57F3 /* AlunoSolicitacaoModel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -584,12 +593,15 @@
 				EED3410C1F3A02DF00A8AB0F /* Color.swift in Sources */,
 				EEFF44D31F30E4640089941E /* Network.swift in Sources */,
 				EEE4AF071EAD8EED00AA2539 /* Cache.swift in Sources */,
+				EEDDC7911F5F13C100AE57F3 /* MensagemViewController.swift in Sources */,
 				EED8EA691EBA8030006F9AC1 /* AlunoModel.swift in Sources */,
 				EEE4AEFF1EAD8E2F00AA2539 /* SWRevealViewController.m in Sources */,
 				EEE4AF191EAD8FC900AA2539 /* AppURLProtocol.swift in Sources */,
 				EEE4AEE31EAD8D8700AA2539 /* DateField.swift in Sources */,
+				EE34CF491F5DCD4C0038241B /* AlunoCadastroViewController.swift in Sources */,
 				EED3410A1F3A02A300A8AB0F /* ShadowUtils.swift in Sources */,
 				EEE4AED91EAD8D8000AA2539 /* DateUtils.swift in Sources */,
+				EEDDC78F1F5EDD3D00AE57F3 /* AlunoSolicitacaoModel.swift in Sources */,
 				EEE4AF3B1EAD988100AA2539 /* DispositivoService.swift in Sources */,
 				EE30241C1ECC9AA200B7F010 /* FuncionarioModel.swift in Sources */,
 				EEE4AF3A1EAD988100AA2539 /* CacheService.swift in Sources */,
@@ -695,6 +707,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "Filho na escola Ad Hoc";
 				SWIFT_OBJC_BRIDGING_HEADER = "FilhoEscola/FilhoEscola-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = "Ad Hoc Distribuction";
 		};
@@ -810,6 +823,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "FilhoEscola/FilhoEscola-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -829,6 +843,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "Filho na escola Dev";
 				SWIFT_OBJC_BRIDGING_HEADER = "FilhoEscola/FilhoEscola-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -12,14 +12,12 @@ class AcessoViewController: AppViewController {
 
     @IBOutlet weak var nomeTextField: TextField!
     @IBOutlet weak var celularTextField: TextField!
-    @IBOutlet weak var nascimentoDateField: DateField!
     
     @IBOutlet weak var confirmarButton: Button!
     
     private var isValid: Bool {
         return TextUtils.isNotBlank(nomeTextField.text)
             && celularTextField.maskStatus == .complete
-            && nascimentoDateField.maskStatus == .complete
     }
     
     override func viewDidLoad() {
@@ -44,10 +42,10 @@ class AcessoViewController: AppViewController {
     }
     
     private func confirmar() {
-        if let nome = nomeTextField.text, let celular = celularTextField.text, let dataNascimento = nascimentoDateField.date {
+        if let nome = nomeTextField.text, let celular = celularTextField.text {
             let prefixo = celular.substring(with: 1..<3)
             let numero = celular.substring(from: 5).replacingOccurrences(of: "-", with: "")
-            let dispositivo = Dispositivo(uuid: Device.uuid, nome: nome, numero: numero, prefixo: prefixo, dataNascimento: dataNascimento)
+            let dispositivo = Dispositivo(uuid: Device.uuid, nome: nome, numero: numero, prefixo: prefixo)
             showActivityIndicator()
             let observable = DispositivoService.Async.confirmar(model: dispositivo)
             prepare(for: observable)

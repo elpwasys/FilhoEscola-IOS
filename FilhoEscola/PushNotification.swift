@@ -34,13 +34,17 @@ class PushNotification {
             info = PushNotification.data()
         }
         if let dictionary = info {
-            if let type = dictionary["type"] as? String {
+            if let type = dictionary["type"] as? String, let id = dictionary["id"] as? Int  {
                 if type == "MENSAGEM" {
-                    if controller is AlunoListViewController {
-                        (controller as! AlunoListViewController).carregar()
+                    if controller is MensagemViewController {
+                        let mensagemViewController = controller as! MensagemViewController
+                        mensagemViewController.carregar(id)
                     } else if let revealViewController = controller.revealViewController() {
-                        let navigation = controller.storyboard?.instantiateViewController(withIdentifier: "Navigation.AlunoList")
-                        revealViewController.pushFrontViewController(navigation, animated: true)
+                        let navigation = controller.storyboard?.instantiateViewController(withIdentifier: "Navigation.Mensagem")
+                        if let mensagemViewController = navigation?.childViewControllers.first as? MensagemViewController {
+                            mensagemViewController.id = id
+                            revealViewController.pushFrontViewController(navigation, animated: true)
+                        }
                     }
                 }
             }

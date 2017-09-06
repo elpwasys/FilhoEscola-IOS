@@ -49,7 +49,12 @@ class MenuTableViewController: UITableViewController {
         } else if indexPath.row == 3 {
             let navigation = storyboard?.instantiateViewController(withIdentifier: "Navigation.AlunoList")
             revealViewController().pushFrontViewController(navigation, animated: true)
+        } else if indexPath.row == 4 {
+            link = "ajuda.xhtml"
         } else if indexPath.row == 5 {
+            let navigation = storyboard?.instantiateViewController(withIdentifier: "Navigation.AlunoCadastro")
+            revealViewController().pushFrontViewController(navigation, animated: true)
+        } else if indexPath.row == 6 {
             let navigation = storyboard?.instantiateViewController(withIdentifier: "Scene.Cache")
             revealViewController().pushFrontViewController(navigation, animated: true)
         }

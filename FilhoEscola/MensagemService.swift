@@ -20,11 +20,30 @@ class MensagemService: Service {
         return !results.isEmpty
     }
     
+    static func obter(id: Int, sync: Bool = false) throws -> MensagemModel? {
+        if sync {
+            try buscar() // FIXME: MUDAR ISSO BUSCAR POR ID NO SERVIDOR
+        }
+        let realm = try Realm()
+        let results = realm.objects(Mensagem.self).filter("id = %ld", id)
+        if let mensagem = results.first {
+            let mensagemModel = MensagemModel.from(mensagem)
+            mensagemModel.alunos = [AlunoModel]()
+            for aluno in mensagem.alunos {
+                let alunoModel = AlunoModel.from(aluno, withMessages: false)
+                mensagemModel.alunos?.append(alunoModel)
+            }
+            return mensagemModel
+        }
+        return nil
+    }
+    
     static func filter(id: Int) throws -> MensagemModel? {
         let realm = try Realm()
         let results = realm.objects(Mensagem.self).filter("id = %ld", id)
         if let mensagem = results.first {
-            return MensagemModel.from(mensagem)
+            let model = MensagemModel.from(mensagem)
+            return model
         }
         return nil
     }
@@ -82,15 +101,22 @@ class MensagemService: Service {
             throw result.error!
         }
         let values = result.value!
-        var alunos = [Int: Aluno]()
+        var alunos = [AlunoKey: Aluno]()
         var escolas = [Int: Escola]()
         var funcionarios = [Int: Funcionario]()
         // ESTRUTURACAO DOS DADOS
         for value in values {
-            var aluno = alunos[value.aluno.id]
+            var aluno = alunos[value.aluno.key]
             if aluno == nil {
-                aluno = Aluno.from(value.aluno)
-                alunos[value.aluno.id] = aluno
+                let alunoModel: AlunoModel
+                if let model = try AlunoService.get(value.aluno.key) {
+                    model.atualizar(value.aluno)
+                    alunoModel = model
+                } else {
+                    alunoModel = value.aluno
+                }
+                aluno = Aluno.from(alunoModel)
+                alunos[value.aluno.key] = aluno
             }
             var escola = escolas[value.escola.id]
             if escola == nil {
@@ -150,7 +176,7 @@ class MensagemService: Service {
             funcionario!.mensagens.append(mensagem)
             // ESCOLA
             escola!.mensagens.append(mensagem)
-            if !(escola!.alunos.contains { return $0.id == aluno!.id }) {
+            if !(escola!.alunos.contains { return $0.key == aluno!.key }) {
                 escola!.alunos.append(aluno!)
             }
             if !(escola!.funcionarios.contains { return $0.id == funcionario!.id }) {
@@ -167,6 +193,21 @@ class MensagemService: Service {
             }
             for (_ , funcionario) in funcionarios {
                 realm.add(funcionario, update: true)
+            }
+        }
+    }
+    
+    class Async {
+        static func obter(id: Int) -> Observable<MensagemModel?> {
+            return Observable.create { observer in
+                do {
+                    let result = try MensagemService.obter(id: id)
+                    observer.onNext(result)
+                    observer.onCompleted()
+                } catch {
+                    observer.onError(error)
+                }
+                return Disposables.create()
             }
         }
     }
